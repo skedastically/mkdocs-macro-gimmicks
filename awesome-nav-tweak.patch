@@ -1,0 +1,12 @@
+---
+diff --git a/mkdocs_awesome_nav/plugin.py b/mkdocs_awesome_nav/plugin.py
+--- a/mkdocs_awesome_nav/plugin.py
++++ b/mkdocs_awesome_nav/plugin.py
+@@ -39,4 +39,5 @@ class AwesomeNavPlugin(BasePlugin[AwesomeNavConfig]):
+         nav = get_navigation(files, config)
+         config.nav = original_nav_config
+ 
++        config.plugins['awesome-nav'].generated_nav = nav
+         return nav
+-- 
+

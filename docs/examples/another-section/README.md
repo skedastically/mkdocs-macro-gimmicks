@@ -1,0 +1,1 @@
+This page is supposed to be the section's index page. However, it isn't ordered first in this `another-section` Section.

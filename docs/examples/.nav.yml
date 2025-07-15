@@ -1,0 +1,4 @@
+nav:
+  - index.md
+  - A File: a-section/a-section.md
+  - "*"

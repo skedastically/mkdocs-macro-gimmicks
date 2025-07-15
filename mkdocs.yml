@@ -1,0 +1,31 @@
+site_name: My Docs
+docs_dir: './docs'
+
+theme:
+  name: material
+  palette:
+    - scheme: slate
+  features:
+    - navigation.sections 
+    - navigation.indexes
+    - navigation.footer
+
+exclude_docs: |
+  .*
+  _*
+
+repo_url: https://github.com/skedastically/mkdocs-macro-gimmicks
+
+markdown_extensions:
+  - admonition
+  - pymdownx.details  
+  - pymdownx.tabbed:
+      alternate_style: true
+  - pymdownx.superfences
+  - pymdownx.inlinehilite
+  - footnotes
+
+plugins:
+  - search
+  - macros
+  - awesome-nav
