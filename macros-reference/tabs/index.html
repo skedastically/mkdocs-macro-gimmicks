@@ -20,7 +20,7 @@
     
     
       
-        <title>Files + Navs content tabs - My Docs</title>
+        <title>Macro Rendering Error - My Docs</title>
       
     
     
@@ -72,7 +72,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#files-navs-content-tabs" class="md-skip">
+        <a href="#macro-rendering-error" class="md-skip">
           Skip to content
         </a>
       
@@ -108,7 +108,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Files + Navs content tabs
+              Macro Rendering Error
             
           </span>
         </div>
@@ -392,58 +392,17 @@
         
       
       
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          
-  
-  
-  <span class="md-ellipsis">
-    Files + Navs content tabs
-    
-  </span>
-  
-
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
       <a href="./" class="md-nav__link md-nav__link--active">
         
   
   
   <span class="md-ellipsis">
-    Files + Navs content tabs
+    Macro Rendering Error
     
   </span>
   
 
       </a>
-      
-        
-
-<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
-  
-  
-  
-    
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Table of contents
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#flags" class="md-nav__link">
-    <span class="md-ellipsis">
-      Flags
-    </span>
-  </a>
-  
-</li>
-      
-    </ul>
-  
-</nav>
       
     </li>
   
@@ -707,23 +666,6 @@
     
   
   
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Table of contents
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#flags" class="md-nav__link">
-    <span class="md-ellipsis">
-      Flags
-    </span>
-  </a>
-  
-</li>
-      
-    </ul>
-  
 </nav>
                   </div>
                 </div>
@@ -741,66 +683,23 @@
   
 
 
-<h1 id="files-navs-content-tabs">Files + Navs content tabs</h1>
-<p>The <code>{{ tabnav() }}</code> function provides selectable <a href="https://squidfunk.github.io/mkdocs-material/reference/content-tabs/">content tabs</a> to view both files and navigations. For instance, the tabnav() of this directory has no files:</p>
-<div class="tabbed-set tabbed-alternate" data-tabs="1:2"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio" /><input id="__tabbed_1_2" name="__tabbed_1" type="radio" /><div class="tabbed-labels"><label for="__tabbed_1_1">🔗 - Navigation</label><label for="__tabbed_1_2">📄 - Files</label></div>
-<div class="tabbed-content">
-<div class="tabbed-block">
-<p><ul><li><a href='/macros-reference/listfiles/'>List directory files</a></li><li><a href='/macros-reference/listnavs/'>List navigations</a></li><li><a href='/macros-reference/tabs/'>Files + Navs content tabs</a></li></ul></p>
-</div>
-<div class="tabbed-block">
-<p><ul></ul></p>
-</div>
-</div>
-</div>
-<div class="admonition note">
-<p class="admonition-title">This function should not be called inside a paragraph/another element block as it won't render properly.</p>
-</div>
-<div class="admonition warning">
-<p class="admonition-title">Nested listings are not supported (yet?)</p>
-</div>
-<h2 id="flags">Flags</h2>
-<table>
-<thead>
-<tr>
-<th>Name</th>
-<th>Default value</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><code>navTitle</code></td>
-<td><code>"📄 - Files"</code></td>
-<td>Title for the navigation content tab</td>
-</tr>
-<tr>
-<td><code>filesTitle</code></td>
-<td><code>"🔗 - Navigation"</code></td>
-<td>Title for the files content tab</td>
-</tr>
-<tr>
-<td><code>findSectionIndex</code></td>
-<td><code>True</code></td>
-<td>(from <code>listnavs()</code>) Attempt to find and use <code>index.md</code> or <code>README.md</code> as a subsection's index file, and fallback to whatever is the first file provided for that subsection's items list if nothing's found</td>
-</tr>
-<tr>
-<td><code>excludeCurrentPage</code></td>
-<td><code>True</code></td>
-<td>(from <code>listnavs()</code>) Whether to exclude current page from nav list</td>
-</tr>
-<tr>
-<td><code>excludeMarkdown</code></td>
-<td><code>True</code></td>
-<td>(from <code>listfiles()</code>) Whether to exclude Markdown files from list</td>
-</tr>
-<tr>
-<td><code>squeeze</code></td>
-<td><code>True</code></td>
-<td>Whether to render single-spaced lists (<code>True</code>) that looks squeezed rather than double-spaced lists (<code>False</code>)</td>
-</tr>
-</tbody>
-</table>
+<h1 id="macro-rendering-error"><em>Macro Rendering Error</em></h1>
+<p><em>File</em>: <code>macros-reference\tabs.md</code></p>
+<p><em>UndefinedError</em>: 'sample' is undefined</p>
+<div class="highlight"><pre><span></span><code>Traceback (most recent call last):
+  File &quot;C:\Users\Kevin\AppData\Local\Programs\Python\Python312\Lib\site-packages\mkdocs_macros\plugin.py&quot;, line 688, in render
+    return md_template.render(**page_variables)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File &quot;C:\Users\Kevin\AppData\Local\Programs\Python\Python312\Lib\site-packages\jinja2\environment.py&quot;, line 1295, in render
+    self.environment.handle_exception()
+  File &quot;C:\Users\Kevin\AppData\Local\Programs\Python\Python312\Lib\site-packages\jinja2\environment.py&quot;, line 942, in handle_exception
+    raise rewrite_traceback_stack(source=source)
+  File &quot;&lt;template&gt;&quot;, line 3, in top-level template code
+  File &quot;C:\Users\Kevin\AppData\Local\Programs\Python\Python312\Lib\site-packages\jinja2\utils.py&quot;, line 92, in from_obj
+    if hasattr(obj, &quot;jinja_pass_arg&quot;):
+       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+jinja2.exceptions.UndefinedError: &#39;sample&#39; is undefined
+</code></pre></div>
 
 
 

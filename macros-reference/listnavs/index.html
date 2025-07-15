@@ -416,51 +416,21 @@
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="Usage with awesome-nav">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#tweaking-awesome-nav-plugin" class="md-nav__link">
-    <span class="md-ellipsis">
-      Tweaking awesome-nav plugin
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Tweaking awesome-nav plugin">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#the-manual-way-edit-your-instances-plugin-file" class="md-nav__link">
-    <span class="md-ellipsis">
-      The manual way - edit your instance's plugin file
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#the-semi-auto-way-apply-git-patch-and-then-install-the-plugin" class="md-nav__link">
-    <span class="md-ellipsis">
-      The semi-auto way - Apply git patch and then install the plugin
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
 </li>
       
         <li class="md-nav__item">
   <a href="#flags" class="md-nav__link">
     <span class="md-ellipsis">
       Flags
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#caveats" class="md-nav__link">
+    <span class="md-ellipsis">
+      Caveats
     </span>
   </a>
   
@@ -487,7 +457,7 @@
   
   
   <span class="md-ellipsis">
-    Files + Navs content tabs
+    Macro Rendering Error
     
   </span>
   
@@ -768,51 +738,21 @@
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="Usage with awesome-nav">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#tweaking-awesome-nav-plugin" class="md-nav__link">
-    <span class="md-ellipsis">
-      Tweaking awesome-nav plugin
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Tweaking awesome-nav plugin">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#the-manual-way-edit-your-instances-plugin-file" class="md-nav__link">
-    <span class="md-ellipsis">
-      The manual way - edit your instance's plugin file
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#the-semi-auto-way-apply-git-patch-and-then-install-the-plugin" class="md-nav__link">
-    <span class="md-ellipsis">
-      The semi-auto way - Apply git patch and then install the plugin
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
 </li>
       
         <li class="md-nav__item">
   <a href="#flags" class="md-nav__link">
     <span class="md-ellipsis">
       Flags
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#caveats" class="md-nav__link">
+    <span class="md-ellipsis">
+      Caveats
     </span>
   </a>
   
@@ -841,8 +781,7 @@
 <p>To list navigations<sup id="fnref:1"><a class="footnote-ref" href="#fn:1">1</a></sup> within a page's section, use</p>
 <div class="highlight"><pre><span></span><code>{{ listnavs() }}
 </code></pre></div>
-<p>This function will attempt to find a page's parent, and iterate through its list to find links. It is useful e.g. for an index of subcontents especially when you wish not to use the included navigation table.</p>
-<p>Please note that it employs various heuristics to get a section's pages, as the <code>Navigation</code> object returned in mkdocs is very incomplete (see these issues: ).</p>
+<p>This function will attempt to find a page's parent, and iterate through its children list to find sibling links. It is useful e.g. for an index of subcontents, especially when you wish not to use the built-in navigation table.</p>
 <div class="admonition note">
 <p class="admonition-title">This function should not be called inside a paragraph/another element block as it won't render properly.</p>
 </div>
@@ -850,41 +789,35 @@
 <p class="admonition-title">Nested listings are not supported (yet?)</p>
 </div>
 <h2 id="usage-with-awesome-nav">Usage with awesome-nav</h2>
-<p><code>listnavs()</code> can be used with <a href="https://github.com/lukasgeiter/mkdocs-awesome-nav/">awesome-nav</a>, but you must tweak the latter plugin a bit to generate a Navigation object that can be used by this macro.</p>
-<h3 id="tweaking-awesome-nav-plugin">Tweaking awesome-nav plugin</h3>
-<h4 id="the-manual-way-edit-your-instances-plugin-file">The manual way - edit your instance's plugin file</h4>
-<div class="tabbed-set tabbed-alternate" data-tabs="1:2"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio" /><input id="__tabbed_1_2" name="__tabbed_1" type="radio" /><div class="tabbed-labels"><label for="__tabbed_1_1">1. Find plugin.py</label><label for="__tabbed_1_2">2. Edit plugin.py</label></div>
+<p><code>listnavs()</code> can be used with <a href="https://github.com/lukasgeiter/mkdocs-awesome-nav">awesome-nav</a> with some tweaks:</p>
+<ol>
+<li>Add an mkdocs<a href="https://www.mkdocs.org/user-guide/configuration/#hooks">hook</a> e.g. <code>hooks.py</code> in your project's root directory (<strong>not</strong> the docs directory) with the following content:</li>
+</ol>
+<div class="tabbed-set tabbed-alternate" data-tabs="1:1"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio" /><div class="tabbed-labels"><label for="__tabbed_1_1">./hooks.py</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
-<p>Find awesome-nav's library path within your system. Usually, it's at somewhere like <code>/usr/lib/python3.12/site-packages/mkdocs_awesome_nav/</code>. Inside that directory there should be a <code>plugin.py</code> file that looks like <a href="https://github.com/lukasgeiter/mkdocs-awesome-nav/blob/main/mkdocs_awesome_nav/plugin.py">this</a></p>
+<div class="highlight"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">on_nav</span><span class="p">(</span><span class="n">nav</span><span class="p">,</span> <span class="n">config</span><span class="p">,</span> <span class="n">files</span><span class="p">):</span>
+    <span class="c1"># overrides config.nav for macros use</span>
+    <span class="n">config</span><span class="o">.</span><span class="n">nav</span> <span class="o">=</span> <span class="n">nav</span>
+    <span class="k">return</span> <span class="n">nav</span>
+</code></pre></div>
 </div>
-<div class="tabbed-block">
-<p>Using an editor, change the last line of <code>plugin.py</code> </p>
-<div class="tabbed-set tabbed-alternate" data-tabs="2:2"><input checked="checked" id="__tabbed_2_1" name="__tabbed_2" type="radio" /><input id="__tabbed_2_2" name="__tabbed_2" type="radio" /><div class="tabbed-labels"><label for="__tabbed_2_1">From:</label><label for="__tabbed_2_2">To:</label></div>
+</div>
+</div>
+<p>Then you can configure both the plugins and this hook in <code>mkdocs.yml</code>. Remember to put macros <strong>after</strong> awesome-nav so the generated navigation can certainly pass through in order.</p>
+<div class="tabbed-set tabbed-alternate" data-tabs="2:1"><input checked="checked" id="__tabbed_2_1" name="__tabbed_2" type="radio" /><div class="tabbed-labels"><label for="__tabbed_2_1">./mkdocs.yml</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
-<div class="highlight"><pre><span></span><code>        <span class="k">return</span> <span class="n">nav</span>
+<div class="highlight"><pre><span></span><code>hooks:
+  - hooks.py
+plugins:
+  - search
+  - awesome-nav
+  - macros
 </code></pre></div>
 </div>
-<div class="tabbed-block">
-<div class="highlight"><pre><span></span><code>        <span class="n">config</span><span class="o">.</span><span class="n">plugins</span><span class="p">[</span><span class="s1">&#39;awesome-nav&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">generated_nav</span> <span class="o">=</span> <span class="n">nav</span>   
-        <span class="k">return</span> <span class="n">nav</span>
-</code></pre></div>
 </div>
 </div>
-</div>
-</div>
-</div>
-</div>
-<hr />
-<h4 id="the-semi-auto-way-apply-git-patch-and-then-install-the-plugin">The semi-auto way - Apply git patch and then install the plugin</h4>
-<p>You can instead build your own awesome-nav plugin with my provided <a href="https://github.com/skedastically/mkdocs-macro-gimmicks/blob/main/awesome-nav-tweak.patch"><code>awesome-nav-tweak.patch</code></a>, using example steps below for reference:</p>
-<div class="highlight"><pre><span></span><code>git<span class="w"> </span>clone<span class="w"> </span>https://github.com/lukasgeiter/mkdocs-awesome-nav/
-wget<span class="w"> </span>https://raw.githubusercontent.com/skedastically/mkdocs-macro-gimmicks/refs/heads/main/awesome-nav-tweak.patch
-git<span class="w"> </span>apply<span class="w"> </span>awesome-nav-tweak.patch<span class="w"> </span>--directory<span class="w"> </span>mkdocs-awesome-nav
-pip<span class="w"> </span>install<span class="w"> </span>./mkdocs-awesome-nav<span class="w"> </span><span class="c1"># install from directory</span>
-</code></pre></div>
-<p>This should be easy to automate.</p>
 <h2 id="flags">Flags</h2>
 <p>You can also include these flags inside listnavs i.e. with <code>listnavs(excludeCurrentPage = False)</code></p>
 <table>
@@ -918,6 +851,8 @@ pip<span class="w"> </span>install<span class="w"> </span>./mkdocs-awesome-nav<s
 </tr>
 </tbody>
 </table>
+<h2 id="caveats">Caveats</h2>
+<p>If no <code>config.nav</code> object is found, <code>listnavs()</code> employs various heuristics to get a section's pages, as the <code>Navigation</code> object returned by <code>get_navigation</code> is very incomplete (see these issues: <a href="https://github.com/fralau/mkdocs-macros-plugin/issues/156">mkdocs-macros-plugin#156</a>, <a href="https://github.com/fralau/mkdocs-macros-plugin/discussions/198">mkdocs-macro-plugin#198</a>).</p>
 <div class="footnote">
 <hr />
 <ol>
@@ -972,13 +907,13 @@ pip<span class="w"> </span>install<span class="w"> </span>./mkdocs-awesome-nav<s
         
         
           
-          <a href="../tabs/" class="md-footer__link md-footer__link--next" aria-label="Next: Files + Navs content tabs">
+          <a href="../tabs/" class="md-footer__link md-footer__link--next" aria-label="Next: Macro Rendering Error">
             <div class="md-footer__title">
               <span class="md-footer__direction">
                 Next
               </span>
               <div class="md-ellipsis">
-                Files + Navs content tabs
+                Macro Rendering Error
               </div>
             </div>
             <div class="md-footer__button md-icon">
