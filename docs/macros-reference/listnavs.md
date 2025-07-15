@@ -48,11 +48,11 @@ Please note that it employs various heuristics to get a section's pages, as the 
 
 #### The semi-auto way - Apply git patch and then install the plugin
 
-You can instead build your own awesome-nav plugin with my provided `awesome-nav-tweak.patch`, using example steps below for reference:
+You can instead build your own awesome-nav plugin with my provided [`awesome-nav-tweak.patch`]({{ patch_blob_url }}), using example steps below for reference:
 
 ```bash
 git clone https://github.com/lukasgeiter/mkdocs-awesome-nav/
-wget awesome-nav-tweak.patch
+wget {{ patch_url }}
 git apply awesome-nav-tweak.patch --directory mkdocs-awesome-nav
 pip install ./mkdocs-awesome-nav # install from directory
 ```
