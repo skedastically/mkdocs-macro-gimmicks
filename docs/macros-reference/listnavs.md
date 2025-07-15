@@ -6,9 +6,7 @@ To list navigations[^1] within a page's section, use
 {{ "{{ listnavs() }}" }}
 ```
 
-This function will attempt to find a page's parent, and iterate through its list to find links. It is useful e.g. for an index of subcontents especially when you wish not to use the included navigation table.
-
-Please note that it employs various heuristics to get a section's pages, as the `Navigation` object returned in mkdocs is very incomplete (see these issues: ).
+This function will attempt to find a page's parent, and iterate through its children list to find sibling links. It is useful e.g. for an index of subcontents, especially when you wish not to use the built-in navigation table.
 
 !!! note "This function should not be called inside a paragraph/another element block as it won't render properly."
 
@@ -17,47 +15,31 @@ Please note that it employs various heuristics to get a section's pages, as the 
 
 ## Usage with awesome-nav
 
-`listnavs()` can be used with [awesome-nav](https://github.com/lukasgeiter/mkdocs-awesome-nav/), but you must tweak the latter plugin a bit to generate a Navigation object that can be used by this macro.
+`listnavs()` can be used with [awesome-nav](https://github.com/lukasgeiter/mkdocs-awesome-nav) with some tweaks:
 
-### Tweaking awesome-nav plugin
+1. Add an mkdocs[hook](https://www.mkdocs.org/user-guide/configuration/#hooks) e.g. `hooks.py` in your project's root directory (**not** the docs directory) with the following content:
+   
+=== "./hooks.py"
 
-#### The manual way - edit your instance's plugin file
+    ```python
+    def on_nav(nav, config, files):
+        # overrides config.nav for macros use
+        config.nav = nav
+        return nav
+    ```
 
-=== "1. Find plugin.py"
+Then you can configure both the plugins and this hook in `mkdocs.yml`. Remember to put macros **after** awesome-nav so the generated navigation can certainly pass through in order.
 
-    Find awesome-nav's library path within your system. Usually, it's at somewhere like `/usr/lib/python3.12/site-packages/mkdocs_awesome_nav/`. Inside that directory there should be a `plugin.py` file that looks like [this](https://github.com/lukasgeiter/mkdocs-awesome-nav/blob/main/mkdocs_awesome_nav/plugin.py)
+=== "./mkdocs.yml"
 
-=== "2. Edit plugin.py"
-
-    Using an editor, change the last line of `plugin.py` 
-    
-    === "From:"
-
-        ```python
-                return nav
-        ```
-
-    === "To:"
-
-        ```python
-                config.plugins['awesome-nav'].generated_nav = nav   
-                return nav
-        ```
-
----
-
-#### The semi-auto way - Apply git patch and then install the plugin
-
-You can instead build your own awesome-nav plugin with my provided [`awesome-nav-tweak.patch`]({{ patch_blob_url }}), using example steps below for reference:
-
-```bash
-git clone https://github.com/lukasgeiter/mkdocs-awesome-nav/
-wget {{ patch_url }}
-git apply awesome-nav-tweak.patch --directory mkdocs-awesome-nav
-pip install ./mkdocs-awesome-nav # install from directory
-```
-
-This should be easy to automate.
+    ```yml
+    hooks:
+      - hooks.py
+    plugins:
+      - search
+      - awesome-nav
+      - macros
+    ```
 
 ## Flags
 
@@ -69,6 +51,11 @@ You can also include these flags inside listnavs i.e. with `{{ "listnavs(exclude
 | `findSectionIndex`   | `True`        | Attempt to find and use `index.md` or `README.md` as a subsection's index file, instead of whatever is the first file provided for that subsection's items list |
 | `excludeCurrentPage` | `True`        | Whether to exclude current page from nav list                                                                                                                   |
 | `squeeze`            | `False`       | Whether to render single-spaced lists (`True`) that looks squeezed rather than double-spaced lists (`False`)                                                    |
+
+
+## Caveats
+
+If no `config.nav` object is found, `listnavs()` employs various heuristics to get a section's pages, as the `Navigation` object returned by `get_navigation` is very incomplete (see these issues: [mkdocs-macros-plugin#156](https://github.com/fralau/mkdocs-macros-plugin/issues/156), [mkdocs-macro-plugin#198](https://github.com/fralau/mkdocs-macros-plugin/discussions/198)).
 
 
 [^1]: links to other objects like Sections and Pages

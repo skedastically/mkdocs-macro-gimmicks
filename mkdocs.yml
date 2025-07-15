@@ -34,3 +34,6 @@ plugins:
 extra:
   patch_blob_url: https://github.com/skedastically/mkdocs-macro-gimmicks/blob/main/awesome-nav-tweak.patch
   patch_url: https://raw.githubusercontent.com/skedastically/mkdocs-macro-gimmicks/refs/heads/main/awesome-nav-tweak.patch
+
+hooks:
+  - hooks.py

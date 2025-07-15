@@ -141,11 +141,11 @@ def define_env(env):
                 resultUrl = "/" + navObject.url
             return resultTitle, resultUrl
 
-        if 'awesome-nav' in env.conf.plugins:
-            nav = env.conf.plugins['awesome-nav'].generated_nav
-        else:
+        nav = env.conf.nav
+        if nav == None: # if not item exists
             files = get_files(env.conf)
             nav = get_navigation(files, env.conf)
+
         navPage = findNavPage(nav)
         
         try:

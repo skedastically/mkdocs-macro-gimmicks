@@ -1,6 +1,12 @@
 # Files + Navs content tabs
 
+{{ sample() }}
+
 The `{{ "{{ tabnav() }}" }}` function provides selectable [content tabs](https://squidfunk.github.io/mkdocs-material/reference/content-tabs/) to view both files and navigations. For instance, the tabnav() of this directory has no files:
+
+```
+{{ "{{ tabnav(excludeCurrentPage = False) }}" }}
+```
 
 {{ tabnav(excludeCurrentPage = False) }}
 
