@@ -17,7 +17,7 @@ This function will attempt to find a page's parent, and iterate through its chil
 
 `listnavs()` can be used with [awesome-nav](https://github.com/lukasgeiter/mkdocs-awesome-nav) with some tweaks:
 
-1. Add an mkdocs[hook](https://www.mkdocs.org/user-guide/configuration/#hooks) e.g. `hooks.py` in your project's root directory (**not** the docs directory) with the following content:
+1. Add an mkdocs [hook](https://www.mkdocs.org/user-guide/configuration/#hooks) e.g. `hooks.py` in your project's root directory (**not** the docs directory) with the following content:
    
 === "./hooks.py"
 
