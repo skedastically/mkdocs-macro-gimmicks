@@ -420,6 +420,15 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
+  <a href="#editing-mkdocsyml" class="md-nav__link">
+    <span class="md-ellipsis">
+      Editing mkdocs.yml
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#tweaking-awesome-nav-plugin" class="md-nav__link">
     <span class="md-ellipsis">
       Tweaking awesome-nav plugin
@@ -772,6 +781,15 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
+  <a href="#editing-mkdocsyml" class="md-nav__link">
+    <span class="md-ellipsis">
+      Editing mkdocs.yml
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#tweaking-awesome-nav-plugin" class="md-nav__link">
     <span class="md-ellipsis">
       Tweaking awesome-nav plugin
@@ -851,6 +869,13 @@
 </div>
 <h2 id="usage-with-awesome-nav">Usage with awesome-nav</h2>
 <p><code>listnavs()</code> can be used with <a href="https://github.com/lukasgeiter/mkdocs-awesome-nav/">awesome-nav</a>, but you must tweak the latter plugin a bit to generate a Navigation object that can be used by this macro.</p>
+<h3 id="editing-mkdocsyml">Editing mkdocs.yml</h3>
+<p>In <code>mkdocs.yml</code>, please </p>
+<div class="highlight"><pre><span></span><code><span class="nt">plugins</span><span class="p">:</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">search</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">macros</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">awesome-nav</span>
+</code></pre></div>
 <h3 id="tweaking-awesome-nav-plugin">Tweaking awesome-nav plugin</h3>
 <h4 id="the-manual-way-edit-your-instances-plugin-file">The manual way - edit your instance's plugin file</h4>
 <div class="tabbed-set tabbed-alternate" data-tabs="1:2"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio" /><input id="__tabbed_1_2" name="__tabbed_1" type="radio" /><div class="tabbed-labels"><label for="__tabbed_1_1">1. Find plugin.py</label><label for="__tabbed_1_2">2. Edit plugin.py</label></div>
