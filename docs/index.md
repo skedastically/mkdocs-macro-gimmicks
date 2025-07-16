@@ -1,6 +1,6 @@
 # Welcome
 
-This is my personal repo to share some mkdocs tricks I figured out.
+This is my personal repo to share some mkdocs tricks I figured out. Right now it's just some macros.
 
 {{ listnavs() }}
 

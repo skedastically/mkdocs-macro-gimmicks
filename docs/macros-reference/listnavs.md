@@ -12,23 +12,9 @@ This function will attempt to find a page's parent, and iterate through its chil
 
 !!! warning "Nested listings are not supported (yet?)"
 
-
 ## Usage with awesome-nav
 
-`listnavs()` can be used with [awesome-nav](https://github.com/lukasgeiter/mkdocs-awesome-nav) with some tweaks:
-
-1. Add an mkdocs [hook](https://www.mkdocs.org/user-guide/configuration/#hooks) e.g. `hooks.py` in your project's root directory (**not** the docs directory) with the following content:
-   
-=== "./hooks.py"
-
-    ```python
-    def on_nav(nav, config, files):
-        # overrides config.nav for macros use
-        config.nav = nav
-        return nav
-    ```
-
-Then you can configure both the plugins and this hook in `mkdocs.yml`. Remember to put macros **after** awesome-nav so the generated navigation can certainly pass through in order.
+`listnavs()` can be used with [awesome-nav](https://github.com/lukasgeiter/mkdocs-awesome-nav), provided that you configured the hook and list the `macros` plugin **after** `awesome-nav`:
 
 === "./mkdocs.yml"
 
@@ -52,10 +38,8 @@ You can also include these flags inside listnavs i.e. with `{{ "listnavs(exclude
 | `excludeCurrentPage` | `True`        | Whether to exclude current page from nav list                                                                                                                   |
 | `squeeze`            | `False`       | Whether to render single-spaced lists (`True`) that looks squeezed rather than double-spaced lists (`False`)                                                    |
 
-
 ## Caveats
 
-If no `config.nav` object is found, `listnavs()` employs various heuristics to get a section's pages, as the `Navigation` object returned by `get_navigation` is very incomplete (see these issues: [mkdocs-macros-plugin#156](https://github.com/fralau/mkdocs-macros-plugin/issues/156), [mkdocs-macro-plugin#198](https://github.com/fralau/mkdocs-macros-plugin/discussions/198)).
-
+`listnavs()` employs various heuristics to get a section's pages, as the `Navigation` object returned by `get_navigation` is very incomplete (see these issues: [mkdocs-macros-plugin#156](https://github.com/fralau/mkdocs-macros-plugin/issues/156), [mkdocs-macro-plugin#198](https://github.com/fralau/mkdocs-macros-plugin/discussions/198)).
 
 [^1]: links to other objects like Sections and Pages

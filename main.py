@@ -153,7 +153,7 @@ def define_env(env):
         except AttributeError:
             # pages in root dir has no parent, use root nav list instead
             navParentChildren = nav.items
-
+        print(navParentChildren)
         navList = {}
 
         for navObject in navParentChildren:
@@ -175,6 +175,7 @@ def define_env(env):
 
             resultTitle, resultUrl =  findObjectInfo(navObject)
             navList[resultTitle] = resultUrl
+            
 
         content = ""
         contentTitle = ""
