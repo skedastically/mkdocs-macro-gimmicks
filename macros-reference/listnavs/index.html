@@ -789,23 +789,8 @@
 <p class="admonition-title">Nested listings are not supported (yet?)</p>
 </div>
 <h2 id="usage-with-awesome-nav">Usage with awesome-nav</h2>
-<p><code>listnavs()</code> can be used with <a href="https://github.com/lukasgeiter/mkdocs-awesome-nav">awesome-nav</a> with some tweaks:</p>
-<ol>
-<li>Add an mkdocs <a href="https://www.mkdocs.org/user-guide/configuration/#hooks">hook</a> e.g. <code>hooks.py</code> in your project's root directory (<strong>not</strong> the docs directory) with the following content:</li>
-</ol>
-<div class="tabbed-set tabbed-alternate" data-tabs="1:1"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio" /><div class="tabbed-labels"><label for="__tabbed_1_1">./hooks.py</label></div>
-<div class="tabbed-content">
-<div class="tabbed-block">
-<div class="highlight"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">on_nav</span><span class="p">(</span><span class="n">nav</span><span class="p">,</span> <span class="n">config</span><span class="p">,</span> <span class="n">files</span><span class="p">):</span>
-    <span class="c1"># overrides config.nav for macros use</span>
-    <span class="n">config</span><span class="o">.</span><span class="n">nav</span> <span class="o">=</span> <span class="n">nav</span>
-    <span class="k">return</span> <span class="n">nav</span>
-</code></pre></div>
-</div>
-</div>
-</div>
-<p>Then you can configure both the plugins and this hook in <code>mkdocs.yml</code>. Remember to put macros <strong>after</strong> awesome-nav so the generated navigation can certainly pass through in order.</p>
-<div class="tabbed-set tabbed-alternate" data-tabs="2:1"><input checked="checked" id="__tabbed_2_1" name="__tabbed_2" type="radio" /><div class="tabbed-labels"><label for="__tabbed_2_1">./mkdocs.yml</label></div>
+<p><code>listnavs()</code> can be used with <a href="https://github.com/lukasgeiter/mkdocs-awesome-nav">awesome-nav</a>, provided that you configured the hook and list the <code>macros</code> plugin <strong>after</strong> <code>awesome-nav</code>:</p>
+<div class="tabbed-set tabbed-alternate" data-tabs="1:1"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio" /><div class="tabbed-labels"><label for="__tabbed_1_1">./mkdocs.yml</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
 <div class="highlight"><pre><span></span><code>hooks:
@@ -852,7 +837,7 @@ plugins:
 </tbody>
 </table>
 <h2 id="caveats">Caveats</h2>
-<p>If no <code>config.nav</code> object is found, <code>listnavs()</code> employs various heuristics to get a section's pages, as the <code>Navigation</code> object returned by <code>get_navigation</code> is very incomplete (see these issues: <a href="https://github.com/fralau/mkdocs-macros-plugin/issues/156">mkdocs-macros-plugin#156</a>, <a href="https://github.com/fralau/mkdocs-macros-plugin/discussions/198">mkdocs-macro-plugin#198</a>).</p>
+<p><code>listnavs()</code> employs various heuristics to get a section's pages, as the <code>Navigation</code> object returned by <code>get_navigation</code> is very incomplete (see these issues: <a href="https://github.com/fralau/mkdocs-macros-plugin/issues/156">mkdocs-macros-plugin#156</a>, <a href="https://github.com/fralau/mkdocs-macros-plugin/discussions/198">mkdocs-macro-plugin#198</a>).</p>
 <div class="footnote">
 <hr />
 <ol>

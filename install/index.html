@@ -312,18 +312,27 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#install-macros" class="md-nav__link">
+  <a href="#1-install-macros" class="md-nav__link">
     <span class="md-ellipsis">
-      Install macros
+      1. Install macros
     </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#create-mainpy" class="md-nav__link">
+  <a href="#2-create-an-mkdocs-hook" class="md-nav__link">
     <span class="md-ellipsis">
-      Create main.py:
+      2. Create an mkdocs hook
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-create-mainpy" class="md-nav__link">
+    <span class="md-ellipsis">
+      3. Create main.py:
     </span>
   </a>
   
@@ -730,18 +739,27 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#install-macros" class="md-nav__link">
+  <a href="#1-install-macros" class="md-nav__link">
     <span class="md-ellipsis">
-      Install macros
+      1. Install macros
     </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#create-mainpy" class="md-nav__link">
+  <a href="#2-create-an-mkdocs-hook" class="md-nav__link">
     <span class="md-ellipsis">
-      Create main.py:
+      2. Create an mkdocs hook
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-create-mainpy" class="md-nav__link">
+    <span class="md-ellipsis">
+      3. Create main.py:
     </span>
   </a>
   
@@ -776,8 +794,8 @@
 
 
 <h1 id="installation">Installation</h1>
-<p>Most scripts here requires the <a href="https://github.com/fralau/mkdocs-macros-plugin">mkdocs-macro-plugin</a> which involves some setting up</p>
-<h2 id="install-macros">Install macros</h2>
+<p>Assuming you're inside your mkdocs project directory...</p>
+<h2 id="1-install-macros">1. Install macros</h2>
 <p>Install <strong>macros</strong> via <a href="https://mkdocs-macros-plugin.readthedocs.io/en/latest/#installation">mkdocs-macro-plugin</a> as well as required packages</p>
 <div class="highlight"><pre><span></span><code>pip<span class="w"> </span>install<span class="w"> </span>mkdocs-macro-plugin<span class="w"> </span>mrkdwn_analysis<span class="w"> </span>pathspec<span class="w"> </span>python-frontmatter
 </code></pre></div>
@@ -786,8 +804,26 @@
   - search
   - macros
 </code></pre></div>
-<h2 id="create-mainpy">Create <code>main.py</code>:</h2>
-<p>In your project's root directory (<strong>not</strong> the docs directory), create a <code>main.py</code> file and copy the contents of main.py into it. </p>
+<h2 id="2-create-an-mkdocs-hook">2. Create an mkdocs hook</h2>
+<p>Add an mkdocs <a href="https://www.mkdocs.org/user-guide/configuration/#hooks">hook</a> e.g. <code>hooks.py</code> in your project's root directory (<strong>not</strong> the docs directory) with the following content:</p>
+<div class="tabbed-set tabbed-alternate" data-tabs="1:1"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio" /><div class="tabbed-labels"><label for="__tabbed_1_1">./hooks.py</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code><span class="c1"># hooks.py</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">on_nav</span><span class="p">(</span><span class="n">nav</span><span class="p">,</span> <span class="n">config</span><span class="p">,</span> <span class="n">files</span><span class="p">):</span>
+    <span class="c1"># overrides config.nav for macros use</span>
+    <span class="n">config</span><span class="o">.</span><span class="n">nav</span> <span class="o">=</span> <span class="n">nav</span>
+    <span class="k">return</span> <span class="n">nav</span>
+</code></pre></div>
+</div>
+</div>
+</div>
+<p>This is important for use in <a href="../macros-reference/listnavs/">listnavs()</a>, as it allows the macro to receive nav events from mkdocs/other plugins.</p>
+<h2 id="3-create-mainpy">3. Create <code>main.py</code>:</h2>
+<p>In your project's root directory (<strong>not</strong> the docs directory), create a <code>main.py</code> file and copy the contents of <a href="https://github.com/skedastically/mkdocs-macro-gimmicks/blob/main/main.py">main.py</a> into it. </p>
+<p>With wget:</p>
+<div class="highlight"><pre><span></span><code>wget<span class="w"> </span>https://raw.githubusercontent.com/skedastically/mkdocs-macro-gimmicks/main/main.py
+</code></pre></div>
 <p>Now you can start using commands such as <code>{{ listfiles() }}</code></p>
 <p>If you already used macros with the file, simply append the scripts inside <code>def define_env(env):</code> to your file.</p>
 <h2 id="further-resources">Further resources</h2>
