@@ -87,6 +87,9 @@ def define_env(env):
         rootNav = False,
         squeeze = True
         ):
+        """
+        List the navigation tree
+        """
 
         def findSectionIndex(section):
             """
