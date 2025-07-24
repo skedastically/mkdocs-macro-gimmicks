@@ -10,8 +10,7 @@ The `{{ "{{ tabnav() }}" }}` function provides selectable [content tabs](https:/
 
 !!! note "This function should not be called inside a paragraph/another element block as it won't render properly."
 
-!!! warning "Nested listings are not supported (yet?)"
-
+!!! note "Content tabs are an mkdocs-material only feature"
 
 ## Flags
 

@@ -3,3 +3,4 @@ nav:
   - install.md
   - macros-reference
   - examples
+  - "*"

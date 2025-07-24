@@ -21,6 +21,8 @@ The directory details of `./example` is as below
     ```yaml
     nav:
       - index.md
+      - A File: a-section/a-section.md
+      - Example website: https://example.com
       - "*"
     ```
 
@@ -28,8 +30,8 @@ The directory details of `./example` is as below
 
     ```yaml
     nav:
-    - firstpage.md
-    - readme.md
+      - firstpage.md
+      - readme.md
     ```
 
 ---
@@ -49,7 +51,7 @@ The directory details of `./example` is as below
 ## List all files without Markdown and with larger list paddings
 
 ```
-{{ "{{ listfiles(title = 'See all files here', squeeze = True) }}" }}
+{{ "{{ listfiles(squeeze = True) }}" }}
 ```
 
 ### Result
@@ -61,27 +63,39 @@ The directory details of `./example` is as below
 ## List navigations unsqueezed and with current page
 
 ```
-{{ "{{ listnavs(excludeCurrentPage = False, squeeze = False) }}" }}
+{{ "{{ listnav(excludeCurrentPage = False, squeeze = False) }}" }}
 ```
 
 ### Result
 
-{{ listnavs(excludeCurrentPage = False, squeeze = False) }}
+{{ listnav(excludeCurrentPage = False, squeeze = False) }}
 
 ---
 
-## List navigations without finding section index
+## List navigations starting from root and without navIndex
 
 ```
-{{ "{{ listnavs(findSectionIndex = False) }}" }}
+{{ "{{ listnav(rootNav = True, navIndex = False) }}" }}
 ```
 
 ### Result
 
-{{ listnavs(findSectionIndex = False) }}
+{{ listnav(rootNav = True, navIndex = False) }}
 
 !!! info
-    The firstpage, as ordered in `example/another-section/.nav.yml` is now taken as the section's entrypoint page
+    The README.md page is now taken as the section's representative page
+
+---
+
+## List navigations with depth=1
+
+```
+{{ "{{ listnav(depth = 1) }}" }}
+```
+
+### Result
+
+{{ listnav(depth = 1) }}
 
 ---
 

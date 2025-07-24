@@ -2,28 +2,29 @@
 
 listfiles() and listnavs() can work here too
 
-=== "Code"
+## listfiles()
 
-    ```
-    {{ "{{ listfiles() }}" }}
-    ```
+```
+{{ "{{ listfiles() }}" }}
+```
 
-=== "Result"
+### Result
 
-    {{ listfiles() }}
+{{ listfiles() }}
 
 ---
 
-=== "Code"
+## listnav()
 
     ```
-    {{ "{{ listnavs(excludeCurrentPage = True) }}" }}
+    {{ "{{ listnav(excludeCurrentPage = True) }}" }}
     ```
 
-=== "Result"
+### Result
 
-    {{ listnavs(excludeCurrentPage = True) }}
+{{ listnav(excludeCurrentPage = True) }}
 
-    !!! note
-        With `excludeCurrentPage = True`, `bar.md` is now excluded and `index.md` (titled "*Examples*") is now included
+!!! note
+    With `excludeCurrentPage = True`, `bar.md` is now excluded and `index.md` (titled "*Examples*") is now included
+
 ---

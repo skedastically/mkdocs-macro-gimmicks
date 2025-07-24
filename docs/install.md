@@ -32,11 +32,11 @@ Add an mkdocs [hook](https://www.mkdocs.org/user-guide/configuration/#hooks) e.g
         return nav
     ```
 
-This is important for use in [listnavs()](./macros-reference/listnavs.md), as it allows the macro to receive nav events from mkdocs/other plugins.
+This is important for use in [listnavs()](./macros-reference/listnav.md), as it allows the macro to receive nav events from mkdocs/other plugins.
 
 ## 3. Create `main.py`:
 
-In your project's root directory (**not** the docs directory), create a `main.py` file and copy the contents of [main.py](https://github.com/skedastically/mkdocs-macro-gimmicks/blob/main/main.py) into it. 
+Copy the contents of [main.py](https://github.com/skedastically/mkdocs-macro-gimmicks/blob/main/main.py) into the project directory.
 
 With wget:
 
@@ -44,9 +44,7 @@ With wget:
 wget https://raw.githubusercontent.com/skedastically/mkdocs-macro-gimmicks/main/main.py
 ```
 
-Now you can start using commands such as `{{ "{{ listfiles() }}" }}`
-
-If you already used macros with the file, simply append the scripts inside `def define_env(env):` to your file.
+Now you can start using commands such as `{{ "{{ listfiles() }}" }}` and see their results during `mkdocs serve`
 
 ## Further resources
 
