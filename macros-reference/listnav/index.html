@@ -496,6 +496,8 @@
       
         
       
+        
+      
     
     
     
@@ -554,6 +556,29 @@
   
   <span class="md-ellipsis">
     A File
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="https://example.com" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Example website
     
   </span>
   
@@ -635,7 +660,7 @@
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_5" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_6" >
         
           
           <div class="md-nav__link md-nav__container">
@@ -652,14 +677,14 @@
             </a>
             
               
-              <label class="md-nav__link " for="__nav_4_5" id="__nav_4_5_label" tabindex="0">
+              <label class="md-nav__link " for="__nav_4_6" id="__nav_4_6_label" tabindex="0">
                 <span class="md-nav__icon md-icon"></span>
               </label>
             
           </div>
         
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_5_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_4_5">
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_6">
             <span class="md-nav__icon md-icon"></span>
             Another section
           </label>
@@ -779,17 +804,14 @@
 
 <h1 id="list-navigations">List navigations</h1>
 <p>To list navigations<sup id="fnref:1"><a class="footnote-ref" href="#fn:1">1</a></sup> within a page's section, use</p>
-<div class="highlight"><pre><span></span><code>{{ listnavs() }}
+<div class="highlight"><pre><span></span><code>{{ listnav() }}
 </code></pre></div>
-<p>This function will attempt to find a page's parent, and iterate through its children list to find sibling links. It is useful e.g. for an index of subcontents, especially when you wish not to use the built-in navigation table.</p>
+<p>This function will iterate through a page's siblings and their descendants. It'll return a tree-like nested list of navigations with </p>
 <div class="admonition note">
 <p class="admonition-title">This function should not be called inside a paragraph/another element block as it won't render properly.</p>
 </div>
-<div class="admonition warning">
-<p class="admonition-title">Nested listings are not supported (yet?)</p>
-</div>
 <h2 id="usage-with-awesome-nav">Usage with awesome-nav</h2>
-<p><code>listnavs()</code> can be used with <a href="https://github.com/lukasgeiter/mkdocs-awesome-nav">awesome-nav</a>, provided that you configured the hook and list the <code>macros</code> plugin <strong>after</strong> <code>awesome-nav</code>:</p>
+<p><code>listnav()</code> can be used with <a href="https://github.com/lukasgeiter/mkdocs-awesome-nav">awesome-nav</a>, provided that you configured the hook and list the <code>macros</code> plugin <strong>after</strong> <code>awesome-nav</code>:</p>
 <div class="tabbed-set tabbed-alternate" data-tabs="1:1"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio" /><div class="tabbed-labels"><label for="__tabbed_1_1">./mkdocs.yml</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
@@ -815,14 +837,14 @@ plugins:
 </thead>
 <tbody>
 <tr>
-<td><code>title</code></td>
-<td><code>False</code></td>
-<td>Title of the files list inside an <code class="highlight"><span class="p">&lt;</span><span class="nt">h2</span><span class="p">&gt;</span></code> element, provided as a string. Also defaults to "Navigation" if <code>True</code>, and no title if <code>False</code></td>
+<td><code>depth</code></td>
+<td><code>0</code></td>
+<td>Depth of navigation tree. 0 means only the current siblings are listed</td>
 </tr>
 <tr>
-<td><code>findSectionIndex</code></td>
+<td><code>navIndex</code></td>
 <td><code>True</code></td>
-<td>Attempt to find and use <code>index.md</code> or <code>README.md</code> as a subsection's index file, instead of whatever is the first file provided for that subsection's items list</td>
+<td>Attach <code>index.md</code> or <code>README.md</code> to a section's bulletpoint. Similar to mkdocs-material's <a href="https://squidfunk.github.io/mkdocs-material/setup/setting-up-navigation/#section-index-pages"><code>navigation.indexes</code></a></td>
 </tr>
 <tr>
 <td><code>excludeCurrentPage</code></td>
@@ -830,14 +852,32 @@ plugins:
 <td>Whether to exclude current page from nav list</td>
 </tr>
 <tr>
-<td><code>squeeze</code></td>
+<td><code>rootNav</code></td>
 <td><code>False</code></td>
-<td>Whether to render single-spaced lists (<code>True</code>) that looks squeezed rather than double-spaced lists (<code>False</code>)</td>
+<td>If <code>True</code>, returns navigation from root dir regardless of current page</td>
+</tr>
+<tr>
+<td><code>squeeze</code></td>
+<td><code>True</code></td>
+<td>If <code>False</code>, rendered lists are more vertically spaced. Works better in <code>mkdocs</code> and <code>readthedocs</code> themes</td>
 </tr>
 </tbody>
 </table>
 <h2 id="caveats">Caveats</h2>
-<p><code>listnavs()</code> employs various heuristics to get a section's pages, as the <code>Navigation</code> object returned by <code>get_navigation</code> is very incomplete (see these issues: <a href="https://github.com/fralau/mkdocs-macros-plugin/issues/156">mkdocs-macros-plugin#156</a>, <a href="https://github.com/fralau/mkdocs-macros-plugin/discussions/198">mkdocs-macro-plugin#198</a>).</p>
+<p><code>listnav()</code> tries its best to mimic Mkdocs-material's navigation sidebar, hence these opinionated setups..</p>
+<ul>
+<li>Page titles are derived from the following order:<ul>
+<li><code>page.title</code> as found in the Page object if exists</li>
+<li>Their frontmatter's <code>title</code> field if exists</li>
+<li>Their first heading if exists</li>
+<li>Their filename</li>
+</ul>
+</li>
+<li>Section listings are <strong>bolded</strong></li>
+<li>When <code>navIndex=True</code>, section titles are used in lieu of the section index page's title.</li>
+<li>When <code>navIndex=True</code> and on final depth level, any section without an index page will link to its first available page. The listing will be written as "<strong>Section</strong> &gt; Page title"</li>
+<li>Furthermore, links to other pages are <em>relatively resolved</em> from current page. This is to accommodate both subpaths and root-path mkdocs deployments.</li>
+</ul>
 <div class="footnote">
 <hr />
 <ol>

@@ -436,7 +436,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../macros-reference/listnavs/" class="md-nav__link">
+      <a href="../macros-reference/listnav/" class="md-nav__link">
         
   
   
@@ -493,6 +493,8 @@
       
         
           
+        
+      
         
       
         
@@ -578,6 +580,29 @@
   
   
     <li class="md-nav__item">
+      <a href="https://example.com" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Example website
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../examples/baz/" class="md-nav__link">
         
   
@@ -642,7 +667,7 @@
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_5" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_6" >
         
           
           <div class="md-nav__link md-nav__container">
@@ -659,14 +684,14 @@
             </a>
             
               
-              <label class="md-nav__link " for="__nav_4_5" id="__nav_4_5_label" tabindex="0">
+              <label class="md-nav__link " for="__nav_4_6" id="__nav_4_6_label" tabindex="0">
                 <span class="md-nav__icon md-icon"></span>
               </label>
             
           </div>
         
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_5_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_4_5">
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_6">
             <span class="md-nav__icon md-icon"></span>
             Another section
           </label>
@@ -818,14 +843,13 @@
 </div>
 </div>
 </div>
-<p>This is important for use in <a href="../macros-reference/listnavs/">listnavs()</a>, as it allows the macro to receive nav events from mkdocs/other plugins.</p>
+<p>This is important for use in <a href="../macros-reference/listnav/">listnavs()</a>, as it allows the macro to receive nav events from mkdocs/other plugins.</p>
 <h2 id="3-create-mainpy">3. Create <code>main.py</code>:</h2>
-<p>In your project's root directory (<strong>not</strong> the docs directory), create a <code>main.py</code> file and copy the contents of <a href="https://github.com/skedastically/mkdocs-macro-gimmicks/blob/main/main.py">main.py</a> into it. </p>
+<p>Copy the contents of <a href="https://github.com/skedastically/mkdocs-macro-gimmicks/blob/main/main.py">main.py</a> into the project directory.</p>
 <p>With wget:</p>
 <div class="highlight"><pre><span></span><code>wget<span class="w"> </span>https://raw.githubusercontent.com/skedastically/mkdocs-macro-gimmicks/main/main.py
 </code></pre></div>
-<p>Now you can start using commands such as <code>{{ listfiles() }}</code></p>
-<p>If you already used macros with the file, simply append the scripts inside <code>def define_env(env):</code> to your file.</p>
+<p>Now you can start using commands such as <code>{{ listfiles() }}</code> and see their results during <code>mkdocs serve</code></p>
 <h2 id="further-resources">Further resources</h2>
 <ul>
 <li>mkdocs-macro-plugin's <a href="https://mkdocs-macros-plugin.readthedocs.io/en/latest/">website</a></li>

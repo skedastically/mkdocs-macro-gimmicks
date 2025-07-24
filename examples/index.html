@@ -358,7 +358,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../macros-reference/listnavs/" class="md-nav__link">
+      <a href="../macros-reference/listnav/" class="md-nav__link">
         
   
   
@@ -417,6 +417,8 @@
       
         
           
+        
+      
         
       
         
@@ -502,6 +504,29 @@
   
   
     <li class="md-nav__item">
+      <a href="https://example.com" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Example website
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="baz/" class="md-nav__link">
         
   
@@ -566,7 +591,7 @@
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_5" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_6" >
         
           
           <div class="md-nav__link md-nav__container">
@@ -583,14 +608,14 @@
             </a>
             
               
-              <label class="md-nav__link " for="__nav_4_5" id="__nav_4_5_label" tabindex="0">
+              <label class="md-nav__link " for="__nav_4_6" id="__nav_4_6_label" tabindex="0">
                 <span class="md-nav__icon md-icon"></span>
               </label>
             
           </div>
         
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_5_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_4_5">
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_6">
             <span class="md-nav__icon md-icon"></span>
             Another section
           </label>
@@ -735,13 +760,13 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#list-navigations-without-finding-section-index" class="md-nav__link">
+  <a href="#list-navigations-starting-from-root-and-without-navindex" class="md-nav__link">
     <span class="md-ellipsis">
-      List navigations without finding section index
+      List navigations starting from root and without navIndex
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="List navigations without finding section index">
+    <nav class="md-nav" aria-label="List navigations starting from root and without navIndex">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -759,17 +784,41 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#content-tab-that-shows-the-maximum-of-everything-in-this-directory" class="md-nav__link">
+  <a href="#list-navigations-with-depth1" class="md-nav__link">
     <span class="md-ellipsis">
-      Content tab that shows the maximum of everything in this directory
+      List navigations with depth=1
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="Content tab that shows the maximum of everything in this directory">
+    <nav class="md-nav" aria-label="List navigations with depth=1">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
   <a href="#result_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      Result
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#content-tab-that-shows-files-first-and-doesnt-exclude-current-page" class="md-nav__link">
+    <span class="md-ellipsis">
+      Content tab that shows files first and doesn't exclude current page
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Content tab that shows files first and doesn&#39;t exclude current page">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#result_5" class="md-nav__link">
     <span class="md-ellipsis">
       Result
     </span>
@@ -820,13 +869,15 @@
 <div class="tabbed-block">
 <div class="highlight"><pre><span></span><code><span class="nt">nav</span><span class="p">:</span>
 <span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">index.md</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">A File</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">a-section/a-section.md</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">Example website</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">https://example.com</span>
 <span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">&quot;*&quot;</span>
 </code></pre></div>
 </div>
 <div class="tabbed-block">
 <div class="highlight"><pre><span></span><code><span class="nt">nav</span><span class="p">:</span>
-<span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">firstpage.md</span>
-<span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">readme.md</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">firstpage.md</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">readme.md</span>
 </code></pre></div>
 </div>
 </div>
@@ -840,45 +891,50 @@
 
 <hr />
 <h2 id="list-all-files-without-markdown-and-with-larger-list-paddings">List all files without Markdown and with larger list paddings</h2>
-<div class="highlight"><pre><span></span><code>{{ listfiles(title = &#39;See all files here&#39;, squeeze = True) }}
+<div class="highlight"><pre><span></span><code>{{ listfiles(squeeze = True) }}
 </code></pre></div>
 <h3 id="result_1">Result</h3>
 <ul><li><a href='foo.py'>foo.py</a></li></ul>
 
 <hr />
 <h2 id="list-navigations-unsqueezed-and-with-current-page">List navigations unsqueezed and with current page</h2>
-<div class="highlight"><pre><span></span><code>{{ listnavs(excludeCurrentPage = False, squeeze = False) }}
+<div class="highlight"><pre><span></span><code>{{ listnav(excludeCurrentPage = False, squeeze = False) }}
 </code></pre></div>
 <h3 id="result_2">Result</h3>
-<ul><li><a href='/examples/'>Examples</a></li></ul>
-<ul><li><a href='/examples/a-section/a-section/'>A-section</a></li></ul>
-<ul><li><a href='/examples/baz/'>baz.md file</a></li></ul>
-<ul><li><a href='/examples/non-index-page/'>Non-index.md navs and files</a></li></ul>
-<ul><li><a href='examples/another-section/'>Another section</a></li></ul>
+<ul><li><p><a href=".">Examples</a></p></li><li><p><a href="a-section/a-section">A File</a></p></li><li><p><a href="https://example.com">Example website</a></p></li><li><p><a href="baz">baz.md file</a></p></li><li><p><a href="non-index-page">Non-index.md navs and files</a></p></li><li><p><a href="another-section"><b>Another section</b></a></p></li></ul>
 
 <hr />
-<h2 id="list-navigations-without-finding-section-index">List navigations without finding section index</h2>
-<div class="highlight"><pre><span></span><code>{{ listnavs(findSectionIndex = False) }}
+<h2 id="list-navigations-starting-from-root-and-without-navindex">List navigations starting from root and without navIndex</h2>
+<div class="highlight"><pre><span></span><code>{{ listnav(rootNav = True, navIndex = False) }}
 </code></pre></div>
 <h3 id="result_3">Result</h3>
-<ul><li><a href='/examples/a-section/a-section/'>A-section</a></li><li><a href='/examples/baz/'>baz.md file</a></li><li><a href='/examples/non-index-page/'>Non-index.md navs and files</a></li><li><a href='examples/another-section/firstpage/'>Another section</a></li></ul>
+<ul><li><a href="..">Welcome</a></li><li><a href="../install">Installation</a></li><li><b>Macros reference</b> > <a href="../macros-reference/listfiles">List directory files</a></li><li><b>Examples</b> > <a href=".">Examples</a></li></ul>
 
 <div class="admonition info">
 <p class="admonition-title">Info</p>
-<p>The firstpage, as ordered in <code>example/another-section/.nav.yml</code> is now taken as the section's entrypoint page</p>
+<p>The README.md page is now taken as the section's representative page</p>
 </div>
 <hr />
-<h2 id="content-tab-that-shows-the-maximum-of-everything-in-this-directory">Content tab that shows the maximum of everything in this directory</h2>
-<div class="highlight"><pre><span></span><code>{{ tabnav(excludeMarkdown = False, excludeCurrentPage = False) }}
+<h2 id="list-navigations-with-depth1">List navigations with depth=1</h2>
+<div class="highlight"><pre><span></span><code>{{ listnav(depth = 1) }}
 </code></pre></div>
 <h3 id="result_4">Result</h3>
-<div class="tabbed-set tabbed-alternate" data-tabs="2:2"><input checked="checked" id="__tabbed_2_1" name="__tabbed_2" type="radio" /><input id="__tabbed_2_2" name="__tabbed_2" type="radio" /><div class="tabbed-labels"><label for="__tabbed_2_1">🔗 - Navigation</label><label for="__tabbed_2_2">📄 - Files</label></div>
+<ul><li><a href="a-section/a-section">A File</a></li><li><a href="https://example.com">Example website</a></li><li><a href="baz">baz.md file</a></li><li><a href="non-index-page">Non-index.md navs and files</a></li><li><a href="another-section"><b>Another section</b></a><ul><li><a href="another-section/firstpage">firstpage</a></li></ul></li></ul>
+
+<hr />
+<h2 id="content-tab-that-shows-files-first-and-doesnt-exclude-current-page">Content tab that shows files first and doesn't exclude current page</h2>
+<div class="highlight"><pre><span></span><code>{{ tabnav(features=&quot;files,nav&quot;, excludeCurrentPage = False) }}
+</code></pre></div>
+<h3 id="result_5">Result</h3>
+<div class="tabbed-set tabbed-alternate" data-tabs="2:2"><input checked="checked" id="__tabbed_2_1" name="__tabbed_2" type="radio" /><input id="__tabbed_2_2" name="__tabbed_2" type="radio" /><div class="tabbed-labels"><label for="__tabbed_2_1">📄 - Files</label><label for="__tabbed_2_2">🔗 - Navigation</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
-<p><ul><li><a href='/examples/'>Examples</a></li><li><a href='/examples/a-section/a-section/'>A-section</a></li><li><a href='/examples/baz/'>baz.md file</a></li><li><a href='/examples/non-index-page/'>Non-index.md navs and files</a></li><li><a href='examples/another-section/'>Another section</a></li></ul></p>
+<p><ul><li><a href='foo.py'>foo.py</a></li></ul></p>
+<hr />
 </div>
 <div class="tabbed-block">
-<p><ul><li><a href='baz.md'>baz.md</a></li><li><a href='foo.py'>foo.py</a></li><li><a href='index.md'>index.md</a></li><li><a href='non-index-page.md'>non-index-page.md</a></li></ul></p>
+<p><ul><li><a href=".">Examples</a></li><li><a href="a-section/a-section">A File</a></li><li><a href="https://example.com">Example website</a></li><li><a href="baz">baz.md file</a></li><li><a href="non-index-page">Non-index.md navs and files</a></li><li><a href="another-section"><b>Another section</b></a></li></ul></p>
+<hr />
 </div>
 </div>
 </div>

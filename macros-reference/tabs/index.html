@@ -9,7 +9,7 @@
       
       
       
-        <link rel="prev" href="../listnavs/">
+        <link rel="prev" href="../listnav/">
       
       
         <link rel="next" href="../../examples/">
@@ -360,7 +360,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../listnavs/" class="md-nav__link">
+      <a href="../listnav/" class="md-nav__link">
         
   
   
@@ -478,6 +478,8 @@
       
         
       
+        
+      
     
     
     
@@ -536,6 +538,29 @@
   
   <span class="md-ellipsis">
     A File
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="https://example.com" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Example website
     
   </span>
   
@@ -617,7 +642,7 @@
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_5" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_6" >
         
           
           <div class="md-nav__link md-nav__container">
@@ -634,14 +659,14 @@
             </a>
             
               
-              <label class="md-nav__link " for="__nav_4_5" id="__nav_4_5_label" tabindex="0">
+              <label class="md-nav__link " for="__nav_4_6" id="__nav_4_6_label" tabindex="0">
                 <span class="md-nav__icon md-icon"></span>
               </label>
             
           </div>
         
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_5_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_4_5">
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_6">
             <span class="md-nav__icon md-icon"></span>
             Another section
           </label>
@@ -748,18 +773,20 @@
 <div class="tabbed-set tabbed-alternate" data-tabs="1:2"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio" /><input id="__tabbed_1_2" name="__tabbed_1" type="radio" /><div class="tabbed-labels"><label for="__tabbed_1_1">🔗 - Navigation</label><label for="__tabbed_1_2">📄 - Files</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
-<p><ul><li><a href='/macros-reference/listfiles/'>List directory files</a></li><li><a href='/macros-reference/listnavs/'>List navigations</a></li><li><a href='/macros-reference/tabs/'>Files + Navs content tabs</a></li></ul></p>
+<p><ul><li><a href="../listfiles">List directory files</a></li><li><a href="../listnav">List navigations</a></li><li><a href=".">Files + Navs content tabs</a></li></ul></p>
+<hr />
 </div>
 <div class="tabbed-block">
 <p><ul></ul></p>
+<hr />
 </div>
 </div>
 </div>
 <div class="admonition note">
 <p class="admonition-title">This function should not be called inside a paragraph/another element block as it won't render properly.</p>
 </div>
-<div class="admonition warning">
-<p class="admonition-title">Nested listings are not supported (yet?)</p>
+<div class="admonition note">
+<p class="admonition-title">Content tabs are an mkdocs-material only feature</p>
 </div>
 <h2 id="flags">Flags</h2>
 <table>
@@ -771,6 +798,11 @@
 </tr>
 </thead>
 <tbody>
+<tr>
+<td><code>features</code></td>
+<td><code>nav,files</code></td>
+<td>Comma-separated feature list, of which valid variables are <code>nav</code> and <code>files</code></td>
+</tr>
 <tr>
 <td><code>navTitle</code></td>
 <td><code>"📄 - Files"</code></td>
@@ -832,7 +864,7 @@
       <nav class="md-footer__inner md-grid" aria-label="Footer" >
         
           
-          <a href="../listnavs/" class="md-footer__link md-footer__link--prev" aria-label="Previous: List navigations">
+          <a href="../listnav/" class="md-footer__link md-footer__link--prev" aria-label="Previous: List navigations">
             <div class="md-footer__button md-icon">
               
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
