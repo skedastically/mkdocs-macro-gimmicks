@@ -99,12 +99,12 @@ The directory details of `./example` is as below
 
 ---
 
-## Content tab that shows the maximum of everything in this directory
+## Content tab that shows files first and doesn't exclude current page
 
 ```
-{{ "{{ tabnav(excludeMarkdown = False, excludeCurrentPage = False) }}" }}
+{{ "{{ tabnav(features=\"files,nav\", excludeCurrentPage = False) }}" }}
 ```
 
 ### Result
 
-{{ tabnav(excludeMarkdown = False, excludeCurrentPage = False) }}
+{{ tabnav(features="files,nav",excludeCurrentPage = False) }}

@@ -49,36 +49,7 @@ def define_env(env):
                 content = content + f"<li><a href='{match}'>{match}</a></li>"
             content = "<ul>" + content + "</ul>"
         return content
-
-    @env.macro
-    def tabnav(        
-
-        # content tab vars
-        navTitle = "🔗 - Navigation",
-        filesTitle = "📄 - Files",
-
-        # nav vars
-        navDepth = 0,
-        navIndex = True,
-        excludeCurrentPage = True,
-
-        # files vars
-        excludeMarkdown = True,
-        squeeze = True
-    ):
-        nav = listnav(
-            depth=navDepth,
-            navIndex=navIndex,
-            excludeCurrentPage = excludeCurrentPage,
-            squeeze=squeeze
-            )
-
-        files = listfiles(squeeze=squeeze,excludeMarkdown=excludeMarkdown)
-
-        content = f'=== "{navTitle}"\n\n' + "\t" + nav + "\n\n\t---\n"
-        content = content + f'=== "{filesTitle}"\n\n' + "\t" + files + "\n\n\t---\n"
-        return content
-    
+   
     @env.macro
     def listnav(
         depth=0,
@@ -225,4 +196,45 @@ def define_env(env):
         
         content = "<ul>" + gennav(siblings, depth=depth, navIndex=navIndex, excludePage=excludePage, squeeze=squeeze) + "</ul>"
         
+        return content
+
+    @env.macro
+    def tabnav(        
+
+        features = "nav,files",
+
+        # content tab vars
+        navTitle = "🔗 - Navigation",
+        filesTitle = "📄 - Files",
+
+        # nav vars
+        navDepth = 0,
+        navIndex = True,
+        excludeCurrentPage = True,
+        rootNav = False,
+
+        # files vars
+        excludeMarkdown = True,
+        squeeze = True
+    ):
+        nav = listnav(
+            depth=navDepth,
+            navIndex=navIndex,
+            excludeCurrentPage = excludeCurrentPage,
+            rootNav = rootNav,
+            squeeze=squeeze
+            )
+
+        files = listfiles(
+            squeeze=squeeze,
+            excludeMarkdown=excludeMarkdown)
+
+        content = ""
+
+        for feature in features.split(","):
+            if feature == "nav":
+                content = content + f'=== "{navTitle}"\n\n' + "\t" + nav + "\n\n\t---\n"
+            elif feature == "files":
+                content = content + f'=== "{filesTitle}"\n\n' + "\t" + files + "\n\n\t---\n"
+
         return content
