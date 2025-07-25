@@ -1087,6 +1087,8 @@
 <div class="tabbed-content">
 <div class="tabbed-block">
 <div class="highlight"><span class="filename">tree</span><pre><span></span><code>.
+├── .hiddenfile.txt
+├── .nav.yml
 ├── _hidden.md
 ├── a-section
 │   ├── a-section.md
@@ -1095,6 +1097,7 @@
 │   │   └── textfile.txt
 │   └── test.ipynb
 ├── another-section
+│   ├── .nav.yml
 │   ├── README.md
 │   ├── example.toml
 │   └── firstpage.md
@@ -1105,7 +1108,7 @@
 </code></pre></div>
 </div>
 <div class="tabbed-block">
-<div class="highlight"><pre><span></span><code><span class="nt">nav</span><span class="p">:</span>
+<div class="highlight"><span class="filename">.nav.yml</span><pre><span></span><code><span class="nt">nav</span><span class="p">:</span>
 <span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">index.md</span>
 <span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">A File</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">a-section/a-section.md</span>
 <span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">Example website</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">https://example.com</span>
@@ -1113,9 +1116,9 @@
 </code></pre></div>
 </div>
 <div class="tabbed-block">
-<div class="highlight"><pre><span></span><code><span class="nt">nav</span><span class="p">:</span>
+<div class="highlight"><span class="filename">./another-section/.nav.yml</span><pre><span></span><code><span class="nt">nav</span><span class="p">:</span>
 <span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">firstpage.md</span>
-<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">readme.md</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">README.md</span>
 </code></pre></div>
 </div>
 </div>
