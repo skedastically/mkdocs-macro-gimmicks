@@ -9,7 +9,7 @@
       
       
       
-        <link rel="prev" href="../listnav/">
+        <link rel="prev" href="../lsnav/">
       
       
         <link rel="next" href="../../examples/">
@@ -337,7 +337,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../listfiles/" class="md-nav__link">
+      <a href="../lsdir/" class="md-nav__link">
         
   
   
@@ -360,7 +360,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../listnav/" class="md-nav__link">
+      <a href="../lsnav/" class="md-nav__link">
         
   
   
@@ -468,6 +468,8 @@
       
         
           
+        
+      
         
       
         
@@ -628,6 +630,133 @@
       
         
       
+    
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_6" id="__nav_4_6_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    A section
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_6">
+            <span class="md-nav__icon md-icon"></span>
+            A section
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+    
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_6_1" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_6_1" id="__nav_4_6_1_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Anotherdir
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_4_6_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_6_1">
+            <span class="md-nav__icon md-icon"></span>
+            Anotherdir
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../examples/a-section/anotherdir/depth-2-page/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Depth 2 page
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
         
           
         
@@ -642,7 +771,7 @@
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_6" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_7" >
         
           
           <div class="md-nav__link md-nav__container">
@@ -659,14 +788,14 @@
             </a>
             
               
-              <label class="md-nav__link " for="__nav_4_6" id="__nav_4_6_label" tabindex="0">
+              <label class="md-nav__link " for="__nav_4_7" id="__nav_4_7_label" tabindex="0">
                 <span class="md-nav__icon md-icon"></span>
               </label>
             
           </div>
         
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_6_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_4_6">
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_7">
             <span class="md-nav__icon md-icon"></span>
             Another section
           </label>
@@ -767,17 +896,16 @@
 
 
 <h1 id="files-navs-content-tabs">Files + Navs content tabs</h1>
-<p>The <code>{{ tabnav() }}</code> function provides selectable <a href="https://squidfunk.github.io/mkdocs-material/reference/content-tabs/">content tabs</a> to view both files and navigations. For instance, the tabnav() of this directory has no files:</p>
+<p>The <code>{{ tabnav() }}</code> function provides selectable <a href="https://squidfunk.github.io/mkdocs-material/reference/content-tabs/">content tabs</a> that can view both files and navigations. For instance, the tabnav() of this directory has no files:</p>
 <div class="highlight"><pre><span></span><code>{{ tabnav(excludeCurrentPage = False) }}
 </code></pre></div>
-<div class="tabbed-set tabbed-alternate" data-tabs="1:2"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio" /><input id="__tabbed_1_2" name="__tabbed_1" type="radio" /><div class="tabbed-labels"><label for="__tabbed_1_1">🔗 - Navigation</label><label for="__tabbed_1_2">📄 - Files</label></div>
+<div class="tabbed-set tabbed-alternate" data-tabs="1:2"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio" /><input id="__tabbed_1_2" name="__tabbed_1" type="radio" /><div class="tabbed-labels"><label for="__tabbed_1_1">🔗 - Navigation</label><label for="__tabbed_1_2">📂 - Directory listing</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
-<p><ul><li><a href="../listfiles">List directory files</a></li><li><a href="../listnav">List navigations</a></li><li><a href=".">Files + Navs content tabs</a></li></ul></p>
+<p><ul><li><a href="../lsdir">List directory files</a></li><li><a href="../lsnav">List navigations</a></li><li><a href=".">Files + Navs content tabs</a></li></ul></p>
 <hr />
 </div>
 <div class="tabbed-block">
-<p><ul></ul></p>
 <hr />
 </div>
 </div>
@@ -789,6 +917,7 @@
 <p class="admonition-title">Content tabs are an mkdocs-material only feature</p>
 </div>
 <h2 id="flags">Flags</h2>
+<p>The flags are combined from <a href="../lsnav/#flags">lsnav()</a> and <a href="../lsdir/#flags">lsdir()</a></p>
 <table>
 <thead>
 <tr>
@@ -804,34 +933,59 @@
 <td>Comma-separated feature list, of which valid variables are <code>nav</code> and <code>files</code></td>
 </tr>
 <tr>
+<td><code>depth</code></td>
+<td><code>0</code></td>
+<td>Depth of directory and nav trees</td>
+</tr>
+<tr>
 <td><code>navTitle</code></td>
-<td><code>"📄 - Files"</code></td>
+<td><code>"📂 - Directory"</code></td>
 <td>Title for the navigation content tab</td>
 </tr>
 <tr>
-<td><code>filesTitle</code></td>
+<td><code>dirTitle</code></td>
 <td><code>"🔗 - Navigation"</code></td>
-<td>Title for the files content tab</td>
-</tr>
-<tr>
-<td><code>findSectionIndex</code></td>
-<td><code>True</code></td>
-<td>(from <code>listnavs()</code>) Attempt to find and use <code>index.md</code> or <code>README.md</code> as a subsection's index file, and fallback to whatever is the first file provided for that subsection's items list if nothing's found</td>
-</tr>
-<tr>
-<td><code>excludeCurrentPage</code></td>
-<td><code>True</code></td>
-<td>(from <code>listnavs()</code>) Whether to exclude current page from nav list</td>
-</tr>
-<tr>
-<td><code>excludeMarkdown</code></td>
-<td><code>True</code></td>
-<td>(from <code>listfiles()</code>) Whether to exclude Markdown files from list</td>
+<td>Title for the directory content tab</td>
 </tr>
 <tr>
 <td><code>squeeze</code></td>
 <td><code>True</code></td>
-<td>Whether to render single-spaced lists (<code>True</code>) that looks squeezed rather than double-spaced lists (<code>False</code>)</td>
+<td>If <code>False</code>, rendered lists are more vertically spaced. Works better in <code>mkdocs</code> and <code>readthedocs</code> themes</td>
+</tr>
+<tr>
+<td><code>navDepth</code></td>
+<td>None</td>
+<td>Depth level for navigation tree. Overrides <code>depth</code> if set</td>
+</tr>
+<tr>
+<td><code>navIndex</code></td>
+<td><code>True</code></td>
+<td>Attach <code>index.md</code> or <code>README.md</code> to a section's bulletpoint.</td>
+</tr>
+<tr>
+<td><code>excludeCurrentPage</code></td>
+<td><code>True</code></td>
+<td>Whether to exclude current page from nav list</td>
+</tr>
+<tr>
+<td><code>dirDepth</code></td>
+<td>None</td>
+<td>Depth level for directory tree. Overrides <code>depth</code> if set</td>
+</tr>
+<tr>
+<td><code>rootNav</code></td>
+<td><code>False</code></td>
+<td>If <code>True</code>, returns navigation from root dir regardless of current page</td>
+</tr>
+<tr>
+<td><code>targetDir</code></td>
+<td><code>None</code></td>
+<td>Directory to list in string format, relative to docs_dir</td>
+</tr>
+<tr>
+<td><code>showEmptyDirs</code></td>
+<td><code>False</code></td>
+<td>Show dirs without any files and dirs at final depth</td>
 </tr>
 </tbody>
 </table>
@@ -864,7 +1018,7 @@
       <nav class="md-footer__inner md-grid" aria-label="Footer" >
         
           
-          <a href="../listnav/" class="md-footer__link md-footer__link--prev" aria-label="Previous: List navigations">
+          <a href="../lsnav/" class="md-footer__link md-footer__link--prev" aria-label="Previous: List navigations">
             <div class="md-footer__button md-icon">
               
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
