@@ -3,6 +3,7 @@ import pathlib
 from mrkdwn_analysis import MarkdownAnalyzer
 import frontmatter
 
+
 def define_env(env):
     """
     This is the hook for the variables, macros and filters.
@@ -51,6 +52,16 @@ def define_env(env):
         """
         List the navigation tree
         """
+
+        def squeezeItem(content, squeeze):
+            """
+            Return <p>item content</p> if squeeze is False
+            """
+            if not squeeze:
+                print("unsqueeze")
+                return f"<p>{content}</p>"
+            else:
+                return content
 
         def findSectionIndex(section):
             """
@@ -135,12 +146,12 @@ def define_env(env):
                 if depth >= currentDepth:
                     # Terminate links first
                     if item.is_link:
-                        pageHeading = f'<a href="{item.url}">{item.title}</a>'
-                        if not squeeze:
-                            pageHeading = f"<p>{pageHeading}</p>"
-                        content = content + "<li>" + pageHeading + "</li>"
+                        itemContent = squeezeItem(
+                            f'<a href="{item.url}">{item.title}</a>', squeeze
+                        )
 
                     elif item.is_section:
+                        sectionContent = ""
                         sectionTitle = f"<b>{item.title}</b>"
                         sectionIndexPage, sectionFirstPage = findSectionIndex(item)
 
@@ -156,11 +167,10 @@ def define_env(env):
 
                         # only link to a section's representative page if last depth level reached
                         if depth == currentDepth:
-                            sectionContent = ""
                             sectionHeading = (
                                 f'<a href="{sectionPageUrl}">{sectionTitle}</a>'
                             )
-                            if sectionIndexPage == None or not navIndex:
+                            if sectionIndexPage is None or not navIndex:
                                 sectionHeading = f'{sectionTitle} > <a href="{sectionPageUrl}">{sectionPageTitle}</a>'
 
                         elif sectionIndexPage is not None and navIndex:
@@ -173,23 +183,22 @@ def define_env(env):
                             sectionHeading = f"{sectionTitle}"
                             sectionContent = f"<ul>{gennav(item.children, excludePage=None, depth=depth, currentDepth=currentDepth + 1, navIndex=navIndex)}</ul>"
 
-                        if not squeeze:
-                            sectionHeading = f"<p>{sectionHeading}</p>"
-                        content = (
-                            content + "<li>" + sectionHeading + sectionContent + "</li>"
+                        itemContent = (
+                            squeezeItem(sectionHeading, squeeze=squeeze)
+                            + sectionContent
                         )
 
                     elif item.is_page:
                         if item == excludePage:
                             continue
                         pageTitle, pageUrl = getPageInfo(item)
-                        pageHeading = f'<a href="{pageUrl}">{pageTitle}</a>'
-                        if not squeeze:
-                            pageHeading = f"<p>{pageHeading}</p>"
-                        content = content + "<li>" + pageHeading + "</li>"
+                        itemContent = squeezeItem(
+                            f'<a href="{pageUrl}">{pageTitle}</a>', squeeze
+                        )
+
                 else:
                     break
-
+                content = content + f"<li>{itemContent}</li>"
             return content
 
         page = env.page
@@ -205,19 +214,19 @@ def define_env(env):
         if not excludeCurrentPage:
             excludePage = None
 
-        content = (
-            "<ul>"
-            + gennav(
-                siblings,
-                depth=depth,
-                navIndex=navIndex,
-                excludePage=excludePage,
-                squeeze=squeeze,
-            )
-            + "</ul>"
+        content = gennav(
+            siblings,
+            depth=depth,
+            navIndex=navIndex,
+            excludePage=excludePage,
+            squeeze=squeeze,
         )
 
-        return content
+        if content != "":
+            content = f"<ul>{content}</ul>"
+            return content
+        else:
+            return ""
 
     @env.macro
     def lsdir(
@@ -259,7 +268,7 @@ def define_env(env):
 
                     elif item.is_dir():
                         # collect info
-                        itemHeading = squeezeItem("📁 " + item.name, squeeze=squeeze)
+                        itemHeading = "📁 " + item.name
                         itemSubcontent = gendir(
                             dirEntry=os.scandir(item.path),
                             depth=depth,
@@ -277,7 +286,10 @@ def define_env(env):
                         ):
                             continue
                         else:
-                            itemContent = itemHeading + f"<ul>{itemSubcontent}</ul>"
+                            itemContent = (
+                                squeezeItem(itemHeading, squeeze=squeeze)
+                                + f"<ul>{itemSubcontent}</ul>"
+                            )
                     elif item.is_file():
                         itemUrl = pathlib.PurePath(
                             os.path.relpath(item.path, pagePath)
@@ -292,9 +304,7 @@ def define_env(env):
 
         page = env.page
         pagePath = (
-            pathlib.PurePath(env.conf["docs_dir"]).as_posix()
-            + "/"
-            + page.file.src_uri
+            pathlib.PurePath(env.conf["docs_dir"]).as_posix() + "/" + page.file.src_uri
         )
 
         # ignore pages if exclude_docs exists
@@ -330,7 +340,7 @@ def define_env(env):
         features="nav,files",
         depth=0,
         navTitle="🔗 - Navigation",
-        filesTitle="📂 - Directory listing",
+        dirTitle="📂 - Directory listing",
         squeeze=True,
         # nav vars
         navDepth=None,
@@ -340,7 +350,7 @@ def define_env(env):
         # files vars
         dirDepth=None,
         targetDir=None,
-        showEmptyDirs=False
+        showEmptyDirs=False,
     ):
         content = ""
 
@@ -366,6 +376,6 @@ def define_env(env):
                     showEmptyDirs=showEmptyDirs,
                     squeeze=squeeze,
                 )
-                content = content + f'=== "{filesTitle}"\n\n\t{files}\n\n\t---\n'
+                content = content + f'=== "{dirTitle}"\n\n\t{files}\n\n\t---\n'
 
         return content
