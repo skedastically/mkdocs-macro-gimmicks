@@ -22,17 +22,14 @@ plugins:
 
 Add an mkdocs [hook](https://www.mkdocs.org/user-guide/configuration/#hooks) e.g. `hooks.py` in your project's root directory (**not** the docs directory) with the following content:
    
-=== "./hooks.py"
+```python title="hooks.py"
+def on_nav(nav, config, files):
+    # overrides config.nav for macros use
+    config.nav = nav
+    return nav
+```
 
-    ```python
-    # hooks.py
-    def on_nav(nav, config, files):
-        # overrides config.nav for macros use
-        config.nav = nav
-        return nav
-    ```
-
-This is important for use in [listnavs()](./macros-reference/listnav.md), as it allows the macro to receive nav events from mkdocs/other plugins.
+This is important for use in [lsnav()](macros-reference/lsnav.md), as it allows the macro to receive nav events from mkdocs/other plugins.
 
 ## 3. Create `main.py`:
 
@@ -44,7 +41,7 @@ With wget:
 wget https://raw.githubusercontent.com/skedastically/mkdocs-macro-gimmicks/main/main.py
 ```
 
-Now you can start using commands such as `{{ "{{ listfiles() }}" }}` and see their results during `mkdocs serve`
+Now you can start using commands such as `{{ "{{ lsdir() }}" }}` and see their results during `mkdocs serve`
 
 ## Further resources
 

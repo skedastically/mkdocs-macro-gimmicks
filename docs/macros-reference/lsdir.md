@@ -11,11 +11,11 @@ This function will walk current page's directory and list files/folders accordin
 !!! note "This function should not be called inside a paragraph/another element block as it won't render properly."
 
 !!! tip "Note the differences"
-    `lsdir()` walks a page's **current directory** to find siblings and niblings. `listnav()` on the other hand walks a page's current Navigation, which is an [mkdocs-generated object](https://www.mkdocs.org/dev-guide/themes/#mkdocs.structure.nav.Navigation) that is **not representative** of the underlying files.
+    `lsdir()` walks a page's **current directory** to find siblings and niblings. `lsnav()` on the other hand walks a page's current Navigation, which is an [mkdocs-generated object](https://www.mkdocs.org/dev-guide/themes/#mkdocs.structure.nav.Navigation) that is **not representative** of the underlying files.
 
 ## Flags
 
-You can also include these flags inside listfiles e.g. with `{{ "listfiles(depth = 2, squeeze = False)"}}`
+You can also include these flags inside lsdir e.g. with `{{ "lsdir(depth = 2, squeeze = False)" }}`
 
 | Name            | Default value | Description                                                                                              |
 | --------------- | ------------- | -------------------------------------------------------------------------------------------------------- |

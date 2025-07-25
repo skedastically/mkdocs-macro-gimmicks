@@ -1,28 +1,28 @@
 # Non-index.md navs and files
 
-listfiles() and listnavs() can work here too
+lsdir() and lsnavs() can work here too
 
-## listfiles()
+## lsdir()
 
 ```
-{{ "{{ listfiles() }}" }}
+{{ "{{ lsdir() }}" }}
 ```
 
 ### Result
 
-{{ listfiles() }}
+{{ lsdir() }}
 
 ---
 
-## listnav()
+## lsnav()
 
     ```
-    {{ "{{ listnav(excludeCurrentPage = True) }}" }}
+    {{ "{{ lsnav(excludeCurrentPage = True) }}" }}
     ```
 
 ### Result
 
-{{ listnav(excludeCurrentPage = True) }}
+{{ lsnav(excludeCurrentPage = True) }}
 
 !!! note
     With `excludeCurrentPage = True`, `bar.md` is now excluded and `index.md` (titled "*Examples*") is now included

@@ -39,48 +39,48 @@ The directory details of `./example` is as below
 ## List all files including Markdown
 
 ```
-{{ "{{ listfiles(excludeMarkdown = False, squeeze = True) }}" }}
+{{ "{{ lsdir() }}" }}
 ```
 
 ### Result
 
-{{ listfiles(excludeMarkdown = False, squeeze = True) }}
+{{ lsdir() }}
 
 ---
 
 ## List all files without Markdown and with larger list paddings
 
 ```
-{{ "{{ listfiles(squeeze = True) }}" }}
+{{ "{{ lsdir(squeeze = True) }}" }}
 ```
 
 ### Result
 
-{{ listfiles(squeeze = False) }}
+{{ lsdir(squeeze = False) }}
 
 ---
 
 ## List navigations unsqueezed and with current page
 
 ```
-{{ "{{ listnav(excludeCurrentPage = False, squeeze = False) }}" }}
+{{ "{{ lsnav(excludeCurrentPage = False, squeeze = False) }}" }}
 ```
 
 ### Result
 
-{{ listnav(excludeCurrentPage = False, squeeze = False) }}
+{{ lsnav(excludeCurrentPage = False, squeeze = False) }}
 
 ---
 
 ## List navigations starting from root and without navIndex
 
 ```
-{{ "{{ listnav(rootNav = True, navIndex = False) }}" }}
+{{ "{{ lsnav(rootNav = True, navIndex = False) }}" }}
 ```
 
 ### Result
 
-{{ listnav(rootNav = True, navIndex = False) }}
+{{ lsnav(rootNav = True, navIndex = False) }}
 
 !!! info
     The README.md page is now taken as the section's representative page
@@ -90,12 +90,12 @@ The directory details of `./example` is as below
 ## List navigations with depth=1
 
 ```
-{{ "{{ listnav(depth = 1) }}" }}
+{{ "{{ lsnav(depth = 1) }}" }}
 ```
 
 ### Result
 
-{{ listnav(depth = 1) }}
+{{ lsnav(depth = 1) }}
 
 ---
 
