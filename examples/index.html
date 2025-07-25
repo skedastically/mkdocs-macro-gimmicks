@@ -1039,13 +1039,13 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#content-tab-that-shows-files-first-and-doesnt-exclude-current-page" class="md-nav__link">
+  <a href="#content-tab-that-shows-files-first-at-full-depth-and-doesnt-exclude-anything" class="md-nav__link">
     <span class="md-ellipsis">
-      Content tab that shows files first and doesn't exclude current page
+      Content tab that shows files first, at full depth, and doesn't exclude anything
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="Content tab that shows files first and doesn&#39;t exclude current page">
+    <nav class="md-nav" aria-label="Content tab that shows files first, at full depth, and doesn&#39;t exclude anything">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -1128,13 +1128,13 @@
 <div class="highlight"><pre><span></span><code>{{ lsdir() }}
 </code></pre></div>
 <h3 id="result">Result</h3>
-<p><ul><li><a href="foo.py">foo.py</a></li></ul></p>
+<p><ul><li style="list-style-type: '└─ '"><a href="foo.py">foo.py</a></li></ul></p>
 </div>
 <div class="tabbed-block">
 <div class="highlight"><pre><span></span><code>{{ lsdir(squeeze=False) }}
 </code></pre></div>
 <h3 id="result_1">Result</h3>
-<p><ul><li><p><a href="foo.py">foo.py</a></p></li></ul></p>
+<p><ul><li style="list-style-type: '└─ '"><p><a href="foo.py">foo.py</a></p></li></ul></p>
 </div>
 </div>
 </div>
@@ -1146,13 +1146,13 @@
 <div class="highlight"><pre><span></span><code>{{ lsdir(depth=1) }}
 </code></pre></div>
 <h3 id="result_2">Result</h3>
-<p><ul><li>📁 a-section<ul><li><a href="a-section/test.ipynb">test.ipynb</a></li></ul></li><li>📁 another-section<ul><li><a href="another-section/example.toml">example.toml</a></li></ul></li><li><a href="foo.py">foo.py</a></li></ul></p>
+<p><ul><li style="list-style-type: '└─ '">📁 a-section<ul><li style="list-style-type: '└─ '"><a href="a-section/test.ipynb">test.ipynb</a></li></ul></li><li style="list-style-type: '└─ '">📁 another-section<ul><li style="list-style-type: '└─ '"><a href="another-section/example.toml">example.toml</a></li></ul></li><li style="list-style-type: '└─ '"><a href="foo.py">foo.py</a></li></ul></p>
 </div>
 <div class="tabbed-block">
 <div class="highlight"><pre><span></span><code>{{ lsdir(depth=2) }}
 </code></pre></div>
 <h3 id="result_3">Result</h3>
-<p><ul><li>📁 a-section<ul><li>📁 anotherdir<ul><li><a href="a-section/anotherdir/textfile.txt">textfile.txt</a></li></ul></li><li><a href="a-section/test.ipynb">test.ipynb</a></li></ul></li><li>📁 another-section<ul><li><a href="another-section/example.toml">example.toml</a></li></ul></li><li><a href="foo.py">foo.py</a></li></ul></p>
+<p><ul><li style="list-style-type: '└─ '">📁 a-section<ul><li style="list-style-type: '└─ '">📁 anotherdir<ul><li style="list-style-type: '└─ '"><a href="a-section/anotherdir/textfile.txt">textfile.txt</a></li></ul></li><li style="list-style-type: '└─ '"><a href="a-section/test.ipynb">test.ipynb</a></li></ul></li><li style="list-style-type: '└─ '">📁 another-section<ul><li style="list-style-type: '└─ '"><a href="another-section/example.toml">example.toml</a></li></ul></li><li style="list-style-type: '└─ '"><a href="foo.py">foo.py</a></li></ul></p>
 </div>
 </div>
 </div>
@@ -1164,13 +1164,13 @@
 <div class="highlight"><pre><span></span><code>{{ lsdir(depth=1,showEmptyDirs=True) }}
 </code></pre></div>
 <h3 id="result_4">Result</h3>
-<p><ul><li>📁 a-section<ul><li>📁 anotherdir</li><li><a href="a-section/test.ipynb">test.ipynb</a></li></ul></li><li>📁 another-section<ul><li><a href="another-section/example.toml">example.toml</a></li></ul></li><li><a href="foo.py">foo.py</a></li></ul></p>
+<p><ul><li style="list-style-type: '└─ '">📁 a-section<ul><li style="list-style-type: '└─ '">📁 anotherdir</li><li style="list-style-type: '└─ '"><a href="a-section/test.ipynb">test.ipynb</a></li></ul></li><li style="list-style-type: '└─ '">📁 another-section<ul><li style="list-style-type: '└─ '"><a href="another-section/example.toml">example.toml</a></li></ul></li><li style="list-style-type: '└─ '"><a href="foo.py">foo.py</a></li></ul></p>
 </div>
 <div class="tabbed-block">
 <div class="highlight"><pre><span></span><code>{{ lsdir(depth=2,showEmptyDirs=True) }}
 </code></pre></div>
 <h3 id="result_5">Result</h3>
-<p><ul><li>📁 a-section<ul><li>📁 anotherdir<ul><li><a href="a-section/anotherdir/textfile.txt">textfile.txt</a></li></ul></li><li><a href="a-section/test.ipynb">test.ipynb</a></li></ul></li><li>📁 another-section<ul><li><a href="another-section/example.toml">example.toml</a></li></ul></li><li><a href="foo.py">foo.py</a></li></ul></p>
+<p><ul><li style="list-style-type: '└─ '">📁 a-section<ul><li style="list-style-type: '└─ '">📁 anotherdir<ul><li style="list-style-type: '└─ '"><a href="a-section/anotherdir/textfile.txt">textfile.txt</a></li></ul></li><li style="list-style-type: '└─ '"><a href="a-section/test.ipynb">test.ipynb</a></li></ul></li><li style="list-style-type: '└─ '">📁 another-section<ul><li style="list-style-type: '└─ '"><a href="another-section/example.toml">example.toml</a></li></ul></li><li style="list-style-type: '└─ '"><a href="foo.py">foo.py</a></li></ul></p>
 </div>
 </div>
 </div>
@@ -1183,7 +1183,7 @@
 <p>Just use a big depth number e.g. <strong>42</strong> if you wanna walk every subdir</p>
 </div>
 <h3 id="result_6">Result</h3>
-<ul><li>📁 examples<ul><li>📁 a-section<ul><li>📁 anotherdir<ul><li><a href="a-section/anotherdir/textfile.txt">textfile.txt</a></li></ul></li><li><a href="a-section/test.ipynb">test.ipynb</a></li></ul></li><li>📁 another-section<ul><li><a href="another-section/example.toml">example.toml</a></li></ul></li><li><a href="foo.py">foo.py</a></li></ul></li><li>📁 macros-reference</li></ul>
+<ul><li style="list-style-type: '└─ '">📁 examples<ul><li style="list-style-type: '└─ '">📁 a-section<ul><li style="list-style-type: '└─ '">📁 anotherdir<ul><li style="list-style-type: '└─ '"><a href="a-section/anotherdir/textfile.txt">textfile.txt</a></li></ul></li><li style="list-style-type: '└─ '"><a href="a-section/test.ipynb">test.ipynb</a></li></ul></li><li style="list-style-type: '└─ '">📁 another-section<ul><li style="list-style-type: '└─ '"><a href="another-section/example.toml">example.toml</a></li></ul></li><li style="list-style-type: '└─ '"><a href="foo.py">foo.py</a></li></ul></li><li style="list-style-type: '└─ '">📁 macros-reference</li></ul>
 
 <hr />
 <h2 id="list-navigations">List navigations</h2>
@@ -1193,7 +1193,7 @@
 <div class="highlight"><pre><span></span><code>{{ lsnav() }}
 </code></pre></div>
 <h3 id="result_7">Result</h3>
-<p><ul><li><a href="a-section/a-section">A File</a></li><li><a href="https://example.com">Example website</a></li><li><a href="baz">baz.md file</a></li><li><a href="non-index-page">Non-index.md navs and files</a></li><li><b>A section</b></li><li><a href="another-section"><b>Another section</b></a></li></ul></p>
+<p><ul><li style="list-style-type: square"><a href="a-section/a-section">A File</a></li><li style="list-style-type: square"><a href="https://example.com">Example website</a></li><li style="list-style-type: square"><a href="baz">baz.md file</a></li><li style="list-style-type: square"><a href="non-index-page">Non-index.md navs and files</a></li><li style="list-style-type: square"><b>A section</b></li><li style="list-style-type: square"><a href="another-section"><b>Another section</b></a></li></ul></p>
 <div class="admonition info">
 <p class="admonition-title">"A File" is included as it was listed in <code>.nav.yml</code> as part of this section</p>
 </div>
@@ -1202,7 +1202,7 @@
 <div class="highlight"><pre><span></span><code>{{ lsnav(navIndex=False) }}
 </code></pre></div>
 <h3 id="result_8">Result</h3>
-<p><ul><li><a href="a-section/a-section">A File</a></li><li><a href="https://example.com">Example website</a></li><li><a href="baz">baz.md file</a></li><li><a href="non-index-page">Non-index.md navs and files</a></li><li><b>A section</b></li><li><b>Another section</b> &gt; <a href="another-section">Readme</a></li></ul>    </p>
+<p><ul><li style="list-style-type: square"><a href="a-section/a-section">A File</a></li><li style="list-style-type: square"><a href="https://example.com">Example website</a></li><li style="list-style-type: square"><a href="baz">baz.md file</a></li><li style="list-style-type: square"><a href="non-index-page">Non-index.md navs and files</a></li><li style="list-style-type: square"><b>A section</b></li><li style="list-style-type: square"><b>Another section</b> &gt; <a href="another-section">Readme</a></li></ul>    </p>
 <div class="admonition info">
 <p class="admonition-title">"A File" is included as it was listed in <code>.nav.yml</code> as part of this section</p>
 </div>
@@ -1220,13 +1220,13 @@
 <div class="highlight"><pre><span></span><code>{{ lsnav(depth=42, rootNav = True, navIndex = False) }}
 </code></pre></div>
 <h3 id="result_9">Result</h3>
-<p><ul><li><a href="..">Welcome</a></li><li><a href="../install">Installation</a></li><li><b>Macros reference</b><ul><li><a href="../macros-reference/lsdir">List directory files</a></li><li><a href="../macros-reference/lsnav">List navigations</a></li><li><a href="../macros-reference/tabs">Files + Navs content tabs</a></li></ul></li><li><b>Examples</b><ul><li><a href=".">Examples</a></li><li><a href="a-section/a-section">A File</a></li><li><a href="https://example.com">Example website</a></li><li><a href="baz">baz.md file</a></li><li><a href="non-index-page">Non-index.md navs and files</a></li><li><b>A section</b><ul><li><b>Anotherdir</b><ul><li><a href="a-section/anotherdir/depth-2-page">Depth-2-page</a></li></ul></li></ul></li><li><b>Another section</b><ul><li><a href="another-section/firstpage">firstpage</a></li><li><a href="another-section">Readme</a></li></ul></li></ul></li></ul></p>
+<p><ul><li style="list-style-type: square"><a href="..">Welcome</a></li><li style="list-style-type: square"><a href="../install">Installation</a></li><li style="list-style-type: square"><b>Macros reference</b><ul><li style="list-style-type: css:square"><a href="../macros-reference/lsdir">List directory files</a></li><li style="list-style-type: css:square"><a href="../macros-reference/lsnav">List navigations</a></li><li style="list-style-type: css:square"><a href="../macros-reference/tabs">Files + Navs content tabs</a></li></ul></li><li style="list-style-type: square"><b>Examples</b><ul><li style="list-style-type: css:square"><a href=".">Examples</a></li><li style="list-style-type: css:square"><a href="a-section/a-section">A File</a></li><li style="list-style-type: css:square"><a href="https://example.com">Example website</a></li><li style="list-style-type: css:square"><a href="baz">baz.md file</a></li><li style="list-style-type: css:square"><a href="non-index-page">Non-index.md navs and files</a></li><li style="list-style-type: css:square"><b>A section</b><ul><li style="list-style-type: css:square"><b>Anotherdir</b><ul><li style="list-style-type: css:square"><a href="a-section/anotherdir/depth-2-page">Depth-2-page</a></li></ul></li></ul></li><li style="list-style-type: css:square"><b>Another section</b><ul><li style="list-style-type: css:square"><a href="another-section/firstpage">firstpage</a></li><li style="list-style-type: css:square"><a href="another-section">Readme</a></li></ul></li></ul></li></ul></p>
 </div>
 <div class="tabbed-block">
 <div class="highlight"><pre><span></span><code>{{ lsnav(depth=42, rootNav = True, navIndex = False, squeeze=False) }}
 </code></pre></div>
 <h3 id="result_10">Result</h3>
-<p><ul><li><p><a href="..">Welcome</a></p></li><li><p><a href="../install">Installation</a></p></li><li><p><b>Macros reference</b></p><ul><li><p><a href="../macros-reference/lsdir">List directory files</a></p></li><li><p><a href="../macros-reference/lsnav">List navigations</a></p></li><li><p><a href="../macros-reference/tabs">Files + Navs content tabs</a></p></li></ul></li><li><p><b>Examples</b></p><ul><li><p><a href=".">Examples</a></p></li><li><p><a href="a-section/a-section">A File</a></p></li><li><p><a href="https://example.com">Example website</a></p></li><li><p><a href="baz">baz.md file</a></p></li><li><p><a href="non-index-page">Non-index.md navs and files</a></p></li><li><p><b>A section</b></p><ul><li><p><b>Anotherdir</b></p><ul><li><p><a href="a-section/anotherdir/depth-2-page">Depth-2-page</a></p></li></ul></li></ul></li><li><p><b>Another section</b></p><ul><li><p><a href="another-section/firstpage">firstpage</a></p></li><li><p><a href="another-section">Readme</a></p></li></ul></li></ul></li></ul></p>
+<p><ul><li style="list-style-type: square"><p><a href="..">Welcome</a></p></li><li style="list-style-type: square"><p><a href="../install">Installation</a></p></li><li style="list-style-type: square"><p><b>Macros reference</b></p><ul><li style="list-style-type: css:square"><p><a href="../macros-reference/lsdir">List directory files</a></p></li><li style="list-style-type: css:square"><p><a href="../macros-reference/lsnav">List navigations</a></p></li><li style="list-style-type: css:square"><p><a href="../macros-reference/tabs">Files + Navs content tabs</a></p></li></ul></li><li style="list-style-type: square"><p><b>Examples</b></p><ul><li style="list-style-type: css:square"><p><a href=".">Examples</a></p></li><li style="list-style-type: css:square"><p><a href="a-section/a-section">A File</a></p></li><li style="list-style-type: css:square"><p><a href="https://example.com">Example website</a></p></li><li style="list-style-type: css:square"><p><a href="baz">baz.md file</a></p></li><li style="list-style-type: css:square"><p><a href="non-index-page">Non-index.md navs and files</a></p></li><li style="list-style-type: css:square"><p><b>A section</b></p><ul><li style="list-style-type: css:square"><p><b>Anotherdir</b></p><ul><li style="list-style-type: css:square"><p><a href="a-section/anotherdir/depth-2-page">Depth-2-page</a></p></li></ul></li></ul></li><li style="list-style-type: css:square"><p><b>Another section</b></p><ul><li style="list-style-type: css:square"><p><a href="another-section/firstpage">firstpage</a></p></li><li style="list-style-type: css:square"><p><a href="another-section">Readme</a></p></li></ul></li></ul></li></ul></p>
 </div>
 </div>
 </div>
@@ -1238,29 +1238,29 @@
 <div class="highlight"><pre><span></span><code>{{ lsnav(depth = 1) }}
 </code></pre></div>
 <h3 id="result_11">Result</h3>
-<p><ul><li><a href="a-section/a-section">A File</a></li><li><a href="https://example.com">Example website</a></li><li><a href="baz">baz.md file</a></li><li><a href="non-index-page">Non-index.md navs and files</a></li><li><b>A section</b><ul><li><b>Anotherdir</b> &gt; <a href="a-section/anotherdir/depth-2-page">Depth-2-page</a></li></ul></li><li><a href="another-section"><b>Another section</b></a><ul><li><a href="another-section/firstpage">firstpage</a></li></ul></li></ul></p>
+<p><ul><li style="list-style-type: square"><a href="a-section/a-section">A File</a></li><li style="list-style-type: square"><a href="https://example.com">Example website</a></li><li style="list-style-type: square"><a href="baz">baz.md file</a></li><li style="list-style-type: square"><a href="non-index-page">Non-index.md navs and files</a></li><li style="list-style-type: square"><b>A section</b><ul><li style="list-style-type: css:square"><b>Anotherdir</b> &gt; <a href="a-section/anotherdir/depth-2-page">Depth-2-page</a></li></ul></li><li style="list-style-type: square"><a href="another-section"><b>Another section</b></a><ul><li style="list-style-type: square"><a href="another-section/firstpage">firstpage</a></li></ul></li></ul></p>
 </div>
 <div class="tabbed-block">
 <div class="highlight"><pre><span></span><code>{{ lsnav(depth = 2) }}
 </code></pre></div>
 <h3 id="result_12">Result</h3>
-<p><ul><li><a href="a-section/a-section">A File</a></li><li><a href="https://example.com">Example website</a></li><li><a href="baz">baz.md file</a></li><li><a href="non-index-page">Non-index.md navs and files</a></li><li><b>A section</b><ul><li><b>Anotherdir</b><ul><li><a href="a-section/anotherdir/depth-2-page">Depth-2-page</a></li></ul></li></ul></li><li><a href="another-section"><b>Another section</b></a><ul><li><a href="another-section/firstpage">firstpage</a></li></ul></li></ul></p>
+<p><ul><li style="list-style-type: square"><a href="a-section/a-section">A File</a></li><li style="list-style-type: square"><a href="https://example.com">Example website</a></li><li style="list-style-type: square"><a href="baz">baz.md file</a></li><li style="list-style-type: square"><a href="non-index-page">Non-index.md navs and files</a></li><li style="list-style-type: square"><b>A section</b><ul><li style="list-style-type: css:square"><b>Anotherdir</b><ul><li style="list-style-type: css:square"><a href="a-section/anotherdir/depth-2-page">Depth-2-page</a></li></ul></li></ul></li><li style="list-style-type: square"><a href="another-section"><b>Another section</b></a><ul><li style="list-style-type: square"><a href="another-section/firstpage">firstpage</a></li></ul></li></ul></p>
 </div>
 </div>
 </div>
 <hr />
-<h2 id="content-tab-that-shows-files-first-and-doesnt-exclude-current-page">Content tab that shows files first and doesn't exclude current page</h2>
-<div class="highlight"><pre><span></span><code>{{ tabnav(features=&quot;files,nav&quot;, excludeCurrentPage = False) }}
+<h2 id="content-tab-that-shows-files-first-at-full-depth-and-doesnt-exclude-anything">Content tab that shows files first, at full depth, and doesn't exclude anything</h2>
+<div class="highlight"><pre><span></span><code>{{ tabnav(depth=42,features=&quot;files,nav&quot;, excludeCurrentPage = False, showEmptyDirs=True) }}
 </code></pre></div>
 <h3 id="result_13">Result</h3>
 <div class="tabbed-set tabbed-alternate" data-tabs="8:2"><input checked="checked" id="__tabbed_8_1" name="__tabbed_8" type="radio" /><input id="__tabbed_8_2" name="__tabbed_8" type="radio" /><div class="tabbed-labels"><label for="__tabbed_8_1">📂 - Directory listing</label><label for="__tabbed_8_2">🔗 - Navigation</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
-<p><ul><li><a href="foo.py">foo.py</a></li></ul></p>
+<p><ul><li style="list-style-type: '└─ '">📁 a-section<ul><li style="list-style-type: '└─ '">📁 anotherdir<ul><li style="list-style-type: '└─ '"><a href="a-section/anotherdir/textfile.txt">textfile.txt</a></li></ul></li><li style="list-style-type: '└─ '"><a href="a-section/test.ipynb">test.ipynb</a></li></ul></li><li style="list-style-type: '└─ '">📁 another-section<ul><li style="list-style-type: '└─ '"><a href="another-section/example.toml">example.toml</a></li></ul></li><li style="list-style-type: '└─ '"><a href="foo.py">foo.py</a></li></ul></p>
 <hr />
 </div>
 <div class="tabbed-block">
-<p><ul><li><a href=".">Examples</a></li><li><a href="a-section/a-section">A File</a></li><li><a href="https://example.com">Example website</a></li><li><a href="baz">baz.md file</a></li><li><a href="non-index-page">Non-index.md navs and files</a></li><li><b>A section</b></li><li><a href="another-section"><b>Another section</b></a></li></ul></p>
+<p><ul><li style="list-style-type: square"><a href=".">Examples</a></li><li style="list-style-type: square"><a href="a-section/a-section">A File</a></li><li style="list-style-type: square"><a href="https://example.com">Example website</a></li><li style="list-style-type: square"><a href="baz">baz.md file</a></li><li style="list-style-type: square"><a href="non-index-page">Non-index.md navs and files</a></li><li style="list-style-type: square"><b>A section</b><ul><li style="list-style-type: css:square"><b>Anotherdir</b><ul><li style="list-style-type: css:square"><a href="a-section/anotherdir/depth-2-page">Depth-2-page</a></li></ul></li></ul></li><li style="list-style-type: square"><a href="another-section"><b>Another section</b></a><ul><li style="list-style-type: square"><a href="another-section/firstpage">firstpage</a></li></ul></li></ul></p>
 <hr />
 </div>
 </div>
