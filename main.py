@@ -3,6 +3,7 @@ import pathlib
 from mrkdwn_analysis import MarkdownAnalyzer
 import frontmatter
 
+
 def squeezeItem(content, squeeze):
     """
     Return <p>item content</p> if squeeze is False
@@ -11,6 +12,7 @@ def squeezeItem(content, squeeze):
         return f"<p>{content}</p>"
     else:
         return content
+
 
 def resolveListStyle(listStyle):
     """
