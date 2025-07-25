@@ -3,6 +3,24 @@ import pathlib
 from mrkdwn_analysis import MarkdownAnalyzer
 import frontmatter
 
+def squeezeItem(content, squeeze):
+    """
+    Return <p>item content</p> if squeeze is False
+    """
+    if not squeeze:
+        return f"<p>{content}</p>"
+    else:
+        return content
+
+def resolveListStyle(listStyle):
+    """
+    Determines list-style-type CSS attribute
+    """
+    if listStyle[0:4] == "css:":
+        return listStyle[4:]
+    else:
+        return f"'{listStyle} '"
+
 
 def define_env(env):
     """
@@ -21,24 +39,6 @@ def define_env(env):
         """
         List the navigation tree
         """
-
-        def squeezeItem(content, squeeze):
-            """
-            Return <p>item content</p> if squeeze is False
-            """
-            if not squeeze:
-                return f"<p>{content}</p>"
-            else:
-                return content
-
-        def resolveListStyle(listStyle):
-            """
-            Determines list-style-type CSS attribute
-            """
-            if listStyle[0:4] == "css:":
-                return listStyle[4:]
-            else:
-                return f"'{listStyle} '"
 
         def findSectionIndex(section):
             """
@@ -243,24 +243,6 @@ def define_env(env):
         """
         List all files in a page's current directory
         """
-
-        def squeezeItem(content, squeeze):
-            """
-            Return <p>item content</p> if squeeze is False
-            """
-            if not squeeze:
-                return f"<p>{content}</p>"
-            else:
-                return content
-
-        def resolveListStyle(listStyle):
-            """
-            Determines list-style-type CSS attribute
-            """
-            if listStyle[0:4] == "css:":
-                return listStyle[4:]
-            else:
-                return f"'{listStyle} '"
 
         def gendir(
             dirEntry,
