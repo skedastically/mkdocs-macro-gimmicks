@@ -36,6 +36,7 @@ You can also include these flags inside lsnav i.e. with `{{ "lsnav(excludeCurren
 | `excludeCurrentPage` | `True`        | Whether to exclude current page from nav list                                                                                                                                                                  |
 | `rootNav`            | `False`       | If `True`, returns navigation from root dir regardless of current page |
 | `squeeze`            | `True`        | If `False`, rendered lists are more vertically spaced. Works better in `mkdocs` and `readthedocs` themes                                                                                                       |
+| `listStyle`     | `css:square`           | Style of list's marker. To use [official values](https://developer.mozilla.org/en-US/docs/Web/CSS/list-style-type#values), append with `css:` |
 
 ## Caveats
 

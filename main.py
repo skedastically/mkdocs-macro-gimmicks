@@ -11,7 +11,12 @@ def define_env(env):
 
     @env.macro
     def lsnav(
-        depth=0, navIndex=True, excludeCurrentPage=True, rootNav=False, squeeze=True
+        depth=0,
+        navIndex=True,
+        excludeCurrentPage=True,
+        rootNav=False,
+        squeeze=True,
+        listStyle="css:square",
     ):
         """
         List the navigation tree
@@ -25,6 +30,15 @@ def define_env(env):
                 return f"<p>{content}</p>"
             else:
                 return content
+
+        def resolveListStyle(listStyle):
+            """
+            Determines list-style-type CSS attribute
+            """
+            if listStyle[0:4] == "css:":
+                return listStyle[4:]
+            else:
+                return f"'{listStyle} '"
 
         def findSectionIndex(section):
             """
@@ -51,7 +65,8 @@ def define_env(env):
                             sectionIndexPage = [
                                 child
                                 for child in sectionIndexCandidates
-                                if str(os.path.basename(child.file.src_uri)) == "README.md"
+                                if str(os.path.basename(child.file.src_uri))
+                                == "README.md"
                             ][0]
                         except IndexError:
                             sectionIndexPage = None
@@ -105,6 +120,7 @@ def define_env(env):
             depth=depth,
             currentDepth=0,
             squeeze=squeeze,
+            listStyle=listStyle,
         ):
             content = ""
 
@@ -117,7 +133,6 @@ def define_env(env):
                         )
 
                     elif item.is_section:
-                        
                         # collect section info
                         sectionContent = ""
                         sectionTitle = f"<b>{item.title}</b>"
@@ -127,7 +142,7 @@ def define_env(env):
                         if sectionIndexPage is not None:
                             sectionPage = sectionIndexPage
                             sectionPageTitle, sectionPageUrl = getPageInfo(sectionPage)
-                            
+
                         elif sectionFirstPage is not None:
                             sectionPage = sectionFirstPage
                             sectionPageTitle, sectionPageUrl = getPageInfo(sectionPage)
@@ -149,9 +164,21 @@ def define_env(env):
                             sectionHeading = (
                                 f'<a href="{sectionPageUrl}">{sectionTitle}</a>'
                             )
-                            sectionContent = f"<ul>{gennav(item.children, excludePage=sectionIndexPage, depth=depth, currentDepth=currentDepth + 1)}</ul>"
+                            sectionContent = f"<ul>{
+                                gennav(
+                                    item.children,
+                                    excludePage=sectionIndexPage,
+                                    depth=depth,
+                                    listStyle=listStyle,
+                                    currentDepth=currentDepth + 1,
+                                )
+                            }</ul>"
 
-                        elif sectionIndexPage is None or sectionFirstPage is None or not navIndex:
+                        elif (
+                            sectionIndexPage is None
+                            or sectionFirstPage is None
+                            or not navIndex
+                        ):
                             sectionHeading = f"{sectionTitle}"
                             sectionContent = f"<ul>{gennav(item.children, excludePage=None, depth=depth, currentDepth=currentDepth + 1, navIndex=navIndex)}</ul>"
 
@@ -170,11 +197,15 @@ def define_env(env):
 
                 else:
                     break
-                content = content + f"<li>{itemContent}</li>"
+                content = (
+                    content
+                    + f'<li style="list-style-type: {listStyle}">{itemContent}</li>'
+                )
             return content
 
         page = env.page
         nav = env.conf.nav
+        listStyle = resolveListStyle(listStyle)
 
         # if page is at root dir (hence no parent)
         if page.parent is None or rootNav:
@@ -192,6 +223,7 @@ def define_env(env):
             navIndex=navIndex,
             excludePage=excludePage,
             squeeze=squeeze,
+            listStyle=listStyle,
         )
 
         if content != "":
@@ -206,22 +238,36 @@ def define_env(env):
         targetDir=None,
         showEmptyDirs=False,
         squeeze=True,
+        listStyle="└─",
     ):
         """
         List all files in a page's current directory
         """
 
         def squeezeItem(content, squeeze):
+            """
+            Return <p>item content</p> if squeeze is False
+            """
             if not squeeze:
                 return f"<p>{content}</p>"
             else:
                 return content
 
+        def resolveListStyle(listStyle):
+            """
+            Determines list-style-type CSS attribute
+            """
+            if listStyle[0:4] == "css:":
+                return listStyle[4:]
+            else:
+                return f"'{listStyle} '"
+
         def gendir(
             dirEntry,
             depth=0,
-            specMatch=None,
             showEmptyDirs=showEmptyDirs,
+            listStyle=listStyle,
+            specMatch=None,
             currentDepth=0,
         ):
             content = ""
@@ -243,8 +289,9 @@ def define_env(env):
                         itemSubcontent = gendir(
                             dirEntry=os.scandir(item.path),
                             depth=depth,
-                            specMatch=specMatch,
                             showEmptyDirs=showEmptyDirs,
+                            listStyle=listStyle,
+                            specMatch=specMatch,
                             currentDepth=currentDepth + 1,
                         )
 
@@ -270,13 +317,17 @@ def define_env(env):
                         )
                 else:
                     break
-                content = content + f"<li>{itemContent}</li>"
+                content = (
+                    content
+                    + f'<li style="list-style-type: {listStyle}">{itemContent}</li>'
+                )
             return content
 
         page = env.page
         pagePath = (
             pathlib.PurePath(env.conf["docs_dir"]).as_posix() + "/" + page.file.src_uri
         )
+        listStyle = resolveListStyle(listStyle)
 
         # ignore pages if exclude_docs exists
         specMatch = None
@@ -297,8 +348,13 @@ def define_env(env):
 
         dirEntry = os.scandir(targetDir)
         content = gendir(
-            dirEntry, depth=depth, specMatch=specMatch, showEmptyDirs=showEmptyDirs
+            dirEntry,
+            depth=depth,
+            specMatch=specMatch,
+            showEmptyDirs=showEmptyDirs,
+            listStyle=listStyle,
         )
+
         if content != "":
             content = f"<ul>{content}</ul>"
             return content

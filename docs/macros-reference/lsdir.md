@@ -17,12 +17,13 @@ This function will walk current page's directory and list files/folders accordin
 
 You can also include these flags inside lsdir e.g. with `{{ "lsdir(depth = 2, squeeze = False)" }}`
 
-| Name            | Default value | Description                                                                                              |
-| --------------- | ------------- | -------------------------------------------------------------------------------------------------------- |
-| `depth`         | `0`           | Depth of directory tree. 0 means only the current siblings are listed                                    |
-| `targetDir`     | None          | Directory to list in string format, relative to docs_dir                                                 |
-| `showEmptyDirs` | `False`        | Show dirs without any files and dirs at final depth |
-| `squeeze`       | `True`        | If `False`, rendered lists are more vertically spaced. Works better in `mkdocs` and `readthedocs` themes |
+| Name            | Default value | Description                                                                                                                |
+| --------------- | ------------- | -------------------------------------------------------------------------------------------------------------------------- |
+| `depth`         | `0`           | Depth of directory tree. 0 means only the current siblings are listed                                                      |
+| `targetDir`     | None          | Directory to list in string format, relative to docs_dir                                                                   |
+| `showEmptyDirs` | `False`       | Show dirs without any files and dirs at final depth                                                                        |
+| `squeeze`       | `True`        | If `False`, rendered lists are more vertically spaced. Works better in `mkdocs` and `readthedocs` themes                   |
+| `listStyle`     | `└─`           | Style of list's marker. To use [official values](https://developer.mozilla.org/en-US/docs/Web/CSS/list-style-type#values), append with `css:` |
 
 ## Caveats
 
