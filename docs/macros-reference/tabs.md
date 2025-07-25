@@ -14,6 +14,8 @@ The `{{ "{{ tabnav() }}" }}` function provides selectable [content tabs](https:/
 
 ## Flags
 
+The flags are combined from [lsnav()](./lsnav.md#flags) and [lsdir()](./lsdir.md#flags)
+
 | Name                 | Default value        | Description                                                                                              |
 | -------------------- | -------------------- | -------------------------------------------------------------------------------------------------------- |
 | `features`           | `nav,files`          | Comma-separated feature list, of which valid variables are `nav` and `files`                             |

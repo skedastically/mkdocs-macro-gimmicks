@@ -2,18 +2,25 @@
 
 The directory details of `./example` is as below
 
-=== "Tree"
+=== "Directory tree"
 
-    ```
+    ```title="tree"
     .
     ├── _hidden.md
+    ├── a-section
+    │   ├── a-section.md
+    │   ├── anotherdir
+    │   │   ├── depth-2-page.md
+    │   │   └── textfile.txt
+    │   └── test.ipynb
     ├── another-section
-    │   ├── firstpage.md
     │   ├── README.md
-    │   └── .nav.yml
-    ├── bar.md
+    │   ├── example.toml
+    │   └── firstpage.md
+    ├── baz.md
     ├── foo.py
-    └── index.md
+    ├── index.md
+    └── non-index-page.md
     ```
 
 === "`./.nav.yml`"
@@ -36,66 +43,162 @@ The directory details of `./example` is as below
 
 ---
 
-## List all files including Markdown
+## List all files in current directory
 
-```
-{{ "{{ lsdir() }}" }}
-```
 
-### Result
+=== "Smaller paddings"
+    ```
+    {{ "{{ lsdir() }}" }}
+    ```
 
-{{ lsdir() }}
+    ### Result
 
----
+    {{ lsdir() }}
 
-## List all files without Markdown and with larger list paddings
+=== "Larger paddings"
+    ```
+    {{ "{{ lsdir(squeeze=False) }}" }}
+    ```
+    
+    ### Result
 
-```
-{{ "{{ lsdir(squeeze = True) }}" }}
-```
-
-### Result
-
-{{ lsdir(squeeze = False) }}
-
----
-
-## List navigations unsqueezed and with current page
-
-```
-{{ "{{ lsnav(excludeCurrentPage = False, squeeze = False) }}" }}
-```
-
-### Result
-
-{{ lsnav(excludeCurrentPage = False, squeeze = False) }}
+    {{ lsdir(squeeze=False) }}
 
 ---
 
-## List navigations starting from root and without navIndex
+## List directories and files at depth > 0
 
-```
-{{ "{{ lsnav(rootNav = True, navIndex = False) }}" }}
-```
+=== "`depth=1`"
+    ```
+    {{ "{{ lsdir(depth=1) }}" }}
+    ```
 
-### Result
+    ### Result
 
-{{ lsnav(rootNav = True, navIndex = False) }}
+    {{ lsdir(depth=1) }}
 
-!!! info
-    The README.md page is now taken as the section's representative page
+=== "`depth=2`"
+    ```
+    {{ "{{ lsdir(depth=2) }}" }}
+    ```
+    
+    ### Result
+
+    {{ lsdir(depth=2) }}
 
 ---
 
-## List navigations with depth=1
+## List directories and files at depth > 0, but with `showEmptyDirs=True`
+
+=== "`depth=1`"
+    ```
+    {{ "{{ lsdir(depth=1,showEmptyDirs=True) }}" }}
+    ```
+
+    ### Result
+
+    {{ lsdir(depth=1,showEmptyDirs=True) }}
+
+=== "`depth=2`"
+    ```
+    {{ "{{ lsdir(depth=2,showEmptyDirs=True) }}" }}
+    ```
+    
+    ### Result
+
+    {{ lsdir(depth=2,showEmptyDirs=True) }}
+
+---
+
+
+## List all non-Markdown, non-excluded files and folders from root path
 
 ```
-{{ "{{ lsnav(depth = 1) }}" }}
+{{ "{{ lsdir(depth=42,targetDir=\".\",showEmptyDirs=True) }}" }}
 ```
+
+!!! tip
+    Just use a big depth number e.g. **42** if you wanna walk every subdir
 
 ### Result
 
-{{ lsnav(depth = 1) }}
+{{ lsdir(depth=42,targetDir=".",showEmptyDirs=True) }}
+
+---
+
+## List navigations
+
+=== "With `navIndex=True`"
+    ```
+    {{ "{{ lsnav() }}" }}
+    ```
+
+    ### Result
+
+    {{ lsnav() }}
+
+    !!! info ""A File" is included as it was listed in `.nav.yml` as part of this section"
+
+=== "With `navIndex=False`"
+    ```
+    {{ "{{ lsnav(navIndex=False) }}" }}
+    ```
+    
+    ### Result
+
+    {{ lsnav(navIndex=False) }}    
+
+    !!! info ""A File" is included as it was listed in `.nav.yml` as part of this section"
+
+    !!! info "The README.md page is now treated as a normal page inside the "Another section" section"
+
+---
+
+## List full-depth navigations starting from root and without navIndex
+
+=== "Smaller paddings"
+
+    ```
+    {{ "{{ lsnav(depth=42, rootNav = True, navIndex = False) }}" }}
+    ```
+
+    ### Result
+
+    {{ lsnav(depth=42, rootNav = True, navIndex = False) }}
+
+=== "Larger paddings"
+
+    ```
+    {{ "{{ lsnav(depth=42, rootNav = True, navIndex = False, squeeze=False) }}" }}
+    ```
+
+    ### Result
+
+    {{ lsnav(depth=42, rootNav = True, navIndex = False, squeeze=False) }}
+
+
+---
+
+## List navigations across multiple depths
+
+=== "`depth=1`"
+    ```
+    {{ "{{ lsnav(depth = 1) }}" }}
+    ```
+
+    ### Result
+
+    {{ lsnav(depth = 1) }}
+
+=== "`depth=2`"
+    ```
+    {{ "{{ lsnav(depth = 2) }}" }}
+    ```
+
+    ### Result
+
+    {{ lsnav(depth = 2) }}
+
 
 ---
 

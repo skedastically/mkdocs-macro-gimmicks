@@ -27,3 +27,5 @@ You can also include these flags inside lsdir e.g. with `{{ "lsdir(depth = 2, sq
 ## Caveats
 
 - Instead of using the Files object, `lsdir()` walks the file directory on the current machine. This may be subject to filesystem quirks and features.
+- As they've already been rendered to pages, Markdown files are not listed and won't be found
+- Dir/file order is arbitrary. No sort available.
