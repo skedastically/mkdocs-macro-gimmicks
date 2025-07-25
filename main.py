@@ -10,43 +10,7 @@ def define_env(env):
     """
 
     @env.macro
-    def listfiles(excludeMarkdown=True, squeeze=True):
-        """
-        List all files in a page's current directory
-
-        - excludeMarkdown: do not include Markdown as files, defaults to True
-        """
-
-        pagePath = env.page.file.src_uri
-        pageDir = env.conf["docs_dir"] + "/" + os.path.dirname(pagePath)
-        pageDirFiles = [
-            f for f in os.listdir(pageDir) if os.path.isfile(os.path.join(pageDir, f))
-        ]
-
-        # filter Markdown
-        if excludeMarkdown:
-            pageDirFiles = [f for f in pageDirFiles if f[-3:] != ".md"]
-
-        # Filter by exclude_docs list which is a pathspec.gitignore.GitIgnoreSpec object
-        matches = pageDirFiles
-        if env.conf["exclude_docs"] is not None:
-            spec = env.conf["exclude_docs"]
-            matches = list(spec.match_files(pageDirFiles, negate=True))
-
-        content = ""
-
-        # Content list logic
-        if not squeeze:
-            for match in matches:
-                content = content + f"<ul><li><a href='{match}'>{match}</a></li></ul>"
-        else:
-            for match in matches:
-                content = content + f"<li><a href='{match}'>{match}</a></li>"
-            content = "<ul>" + content + "</ul>"
-        return content
-
-    @env.macro
-    def listnav(
+    def lsnav(
         depth=0, navIndex=True, excludeCurrentPage=True, rootNav=False, squeeze=True
     ):
         """
@@ -361,7 +325,7 @@ def define_env(env):
 
         for feature in features.split(","):
             if feature == "nav":
-                nav = listnav(
+                nav = lsnav(
                     depth=navDepth,
                     navIndex=navIndex,
                     excludeCurrentPage=excludeCurrentPage,
