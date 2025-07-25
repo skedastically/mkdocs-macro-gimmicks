@@ -21,7 +21,7 @@ You can also include these flags inside listfiles e.g. with `{{ "listfiles(depth
 | --------------- | ------------- | -------------------------------------------------------------------------------------------------------- |
 | `depth`         | `0`           | Depth of directory tree. 0 means only the current siblings are listed                                    |
 | `targetDir`     | None          | Directory to list in string format, relative to docs_dir                                                 |
-| `showEmptyDirs` | `True`        | Show dirs without any files and dirs at final depth |
+| `showEmptyDirs` | `False`        | Show dirs without any files and dirs at final depth |
 | `squeeze`       | `True`        | If `False`, rendered lists are more vertically spaced. Works better in `mkdocs` and `readthedocs` themes |
 
 ## Caveats
