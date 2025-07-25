@@ -202,12 +202,12 @@ The directory details of `./example` is as below
 
 ---
 
-## Content tab that shows files first and doesn't exclude current page
+## Content tab that shows files first, at full depth, and doesn't exclude anything
 
 ```
-{{ "{{ tabnav(features=\"files,nav\", excludeCurrentPage = False) }}" }}
+{{ "{{ tabnav(depth=42,features=\"files,nav\", excludeCurrentPage = False, showEmptyDirs=True) }}" }}
 ```
 
 ### Result
 
-{{ tabnav(features="files,nav",excludeCurrentPage = False) }}
+{{ tabnav(depth=42,features="files,nav",excludeCurrentPage = False, showEmptyDirs=True) }}
