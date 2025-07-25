@@ -35,24 +35,27 @@ def define_env(env):
             sectionIndexCandidates = [
                 child for child in section.children if child.is_page
             ]
-            sectionFirstPage = sectionIndexCandidates[0]
-            for child in sectionIndexCandidates:
-                try:
-                    sectionIndexPage = [
-                        child
-                        for child in sectionIndexCandidates
-                        if str(os.path.basename(child.file.src_uri)) == "index.md"
-                    ][0]
-                except IndexError:
+            if sectionIndexCandidates == []:
+                return None, None
+            else:
+                sectionFirstPage = sectionIndexCandidates[0]
+                for child in sectionIndexCandidates:
                     try:
                         sectionIndexPage = [
                             child
                             for child in sectionIndexCandidates
-                            if str(os.path.basename(child.file.src_uri)) == "README.md"
+                            if str(os.path.basename(child.file.src_uri)) == "index.md"
                         ][0]
                     except IndexError:
-                        sectionIndexPage = None
-            return sectionIndexPage, sectionFirstPage
+                        try:
+                            sectionIndexPage = [
+                                child
+                                for child in sectionIndexCandidates
+                                if str(os.path.basename(child.file.src_uri)) == "README.md"
+                            ][0]
+                        except IndexError:
+                            sectionIndexPage = None
+                return sectionIndexPage, sectionFirstPage
 
         def getPageInfo(page):
             """
@@ -114,27 +117,33 @@ def define_env(env):
                         )
 
                     elif item.is_section:
+                        
+                        # collect section info
                         sectionContent = ""
                         sectionTitle = f"<b>{item.title}</b>"
                         sectionIndexPage, sectionFirstPage = findSectionIndex(item)
 
                         # fetch index page or first page to serve as the representative section page
                         if sectionIndexPage is not None:
-                            sectionPageTitle, sectionPageUrl = getPageInfo(
-                                sectionIndexPage
-                            )
+                            sectionPage = sectionIndexPage
+                            sectionPageTitle, sectionPageUrl = getPageInfo(sectionPage)
+                            
+                        elif sectionFirstPage is not None:
+                            sectionPage = sectionFirstPage
+                            sectionPageTitle, sectionPageUrl = getPageInfo(sectionPage)
                         else:
-                            sectionPageTitle, sectionPageUrl = getPageInfo(
-                                sectionFirstPage
-                            )
+                            sectionPage = None
 
                         # only link to a section's representative page if last depth level reached
                         if depth == currentDepth:
-                            sectionHeading = (
-                                f'<a href="{sectionPageUrl}">{sectionTitle}</a>'
-                            )
-                            if sectionIndexPage is None or not navIndex:
+                            if sectionPage is None:
+                                sectionHeading = f"{sectionTitle}"
+                            elif sectionIndexPage is None or not navIndex:
                                 sectionHeading = f'{sectionTitle} > <a href="{sectionPageUrl}">{sectionPageTitle}</a>'
+                            else:
+                                sectionHeading = (
+                                    f'<a href="{sectionPageUrl}">{sectionTitle}</a>'
+                                )
 
                         elif sectionIndexPage is not None and navIndex:
                             sectionHeading = (
@@ -142,7 +151,7 @@ def define_env(env):
                             )
                             sectionContent = f"<ul>{gennav(item.children, excludePage=sectionIndexPage, depth=depth, currentDepth=currentDepth + 1)}</ul>"
 
-                        elif sectionIndexPage is None or not navIndex:
+                        elif sectionIndexPage is None or sectionFirstPage is None or not navIndex:
                             sectionHeading = f"{sectionTitle}"
                             sectionContent = f"<ul>{gennav(item.children, excludePage=None, depth=depth, currentDepth=currentDepth + 1, navIndex=navIndex)}</ul>"
 
@@ -254,7 +263,7 @@ def define_env(env):
                             )
                     elif item.is_file():
                         itemUrl = pathlib.PurePath(
-                            os.path.relpath(item.path, pagePath)
+                            os.path.relpath(item.path, os.path.dirname(pagePath))
                         ).as_posix()
                         itemContent = squeezeItem(
                             f'<a href="{itemUrl}">{item.name}</a>', squeeze=squeeze
