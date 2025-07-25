@@ -25,10 +25,12 @@ markdown_extensions:
   - pymdownx.superfences
   - pymdownx.inlinehilite
   - footnotes
+  - pymdownx.snippets
 
 plugins:
   - search
-  - macros
+  - macros:
+      modules: [main,extras]
   - awesome-nav
 
 extra:

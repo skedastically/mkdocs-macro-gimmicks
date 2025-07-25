@@ -6,6 +6,8 @@ The directory details of `./example` is as below
 
     ```title="tree"
     .
+    ├── .hiddenfile.txt
+    ├── .nav.yml
     ├── _hidden.md
     ├── a-section
     │   ├── a-section.md
@@ -14,6 +16,7 @@ The directory details of `./example` is as below
     │   │   └── textfile.txt
     │   └── test.ipynb
     ├── another-section
+    │   ├── .nav.yml
     │   ├── README.md
     │   ├── example.toml
     │   └── firstpage.md
@@ -25,20 +28,14 @@ The directory details of `./example` is as below
 
 === "`./.nav.yml`"
 
-    ```yaml
-    nav:
-      - index.md
-      - A File: a-section/a-section.md
-      - Example website: https://example.com
-      - "*"
+    ```yaml title=".nav.yml"
+    --8<-- "{{cwd }}.nav.yml"
     ```
 
 === "`./another-section/.nav.yml`"
 
-    ```yaml
-    nav:
-      - firstpage.md
-      - readme.md
+    ```yaml title="./another-section/.nav.yml"
+    --8<-- "{{cwd }}another-section/.nav.yml"
     ```
 
 ---
