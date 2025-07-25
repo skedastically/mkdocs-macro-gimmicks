@@ -1,1 +1,3 @@
 This file's path is in `/examples/a-section/a-section.md`, but is part of the `Example` Section due to `.nav.yml` resolution.
+
+{{ context(page) | pretty }}

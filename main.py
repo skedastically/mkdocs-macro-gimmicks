@@ -128,8 +128,9 @@ def define_env(env):
             content = ""
 
             for item in siblings:
+
                 if depth >= currentDepth:
-                    
+
                     # Terminate links first
                     if item.is_link:
                         pageHeading = f'<a href="{item.url}">{item.title}</a>'
@@ -238,3 +239,86 @@ def define_env(env):
                 content = content + f'=== "{filesTitle}"\n\n' + "\t" + files + "\n\n\t---\n"
 
         return content
+
+
+    @env.macro
+    def lsdir(
+            depth = 0,
+            targetDir = None,
+            showEmptyDirs = True,
+            squeeze = True,
+            ):
+
+        """
+        List all files in a page's current directory
+        """
+        def squeezeItem(content,squeeze):
+            if squeeze == False:
+                print('unsqueeze')
+                return f'<p>{content}</p>'
+            else:
+                return content        
+        def gendir(
+            dirEntry,
+            depth=0,
+            specMatch=None,
+            showEmptyDirs=showEmptyDirs,
+            currentDepth=0
+            ):
+            content = ""
+
+            for item in dirEntry:
+                itemSubcontent = ""
+                if depth >= currentDepth:
+
+                    # eliminate Markdowns or exclude_docs items
+                    if (specMatch != None and specMatch.match_file(item.name) == True) or item.name[-3:] == ".md" or item.name[-9:] == ".markdown":
+                        continue
+
+                    elif item.is_dir():
+                        
+                        # collect info
+                        itemHeading = squeezeItem("📁 " + item.name, squeeze=squeeze)
+                        itemSubcontent = gendir(
+                            dirEntry = os.scandir(item.path),
+                            depth=depth,
+                            specMatch = specMatch,
+                            showEmptyDirs=showEmptyDirs,
+                            currentDepth=currentDepth+1
+                            )
+
+                        if showEmptyDirs == True and (itemSubcontent == "" or currentDepth==depth ):
+                            itemContent = itemHeading
+                        elif showEmptyDirs == False and (itemSubcontent == "" or currentDepth==depth ):
+                            continue
+                        else:
+                            itemContent = itemHeading + f'<ul>{itemSubcontent}</ul>'
+                    elif item.is_file():
+                        itemUrl = pathlib.PurePath(os.path.relpath(item.path,pagePath)).as_posix()
+                        itemContent = squeezeItem(f'<a href="{itemUrl}">{item.name}</a>',squeeze=squeeze)
+                else:
+                    break
+                content = content + f'<li>{itemContent}</li>'
+            return content
+
+        page = env.page
+        pagePath = pathlib.PurePath(env.conf["docs_dir"]).as_posix() + "/" + env.page.file.src_uri
+        
+        # ignore pages if exclude_docs exists
+        specMatch = None
+        if env.conf['exclude_docs'] != None:
+            specMatch = env.conf['exclude_docs']        
+
+        # find targetDir if specified
+        if isinstance(targetDir, str):
+            targetDir = pathlib.PurePath(env.conf["docs_dir"]).as_posix() + "/" + targetDir
+        else:
+            targetDir = pathlib.PurePath(env.conf["docs_dir"]).as_posix() + "/" + os.path.dirname(env.page.file.src_uri)
+
+        dirEntry = os.scandir(targetDir)        
+        content = gendir(dirEntry, depth=depth,specMatch=specMatch, showEmptyDirs = showEmptyDirs)
+        if content != "":
+            content = f'<ul>{content}</ul>'
+            return content
+        else:
+            return ""
