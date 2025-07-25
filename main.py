@@ -22,7 +22,6 @@ def define_env(env):
             Return <p>item content</p> if squeeze is False
             """
             if not squeeze:
-                print("unsqueeze")
                 return f"<p>{content}</p>"
             else:
                 return content
@@ -205,7 +204,6 @@ def define_env(env):
 
         def squeezeItem(content, squeeze):
             if not squeeze:
-                print("unsqueeze")
                 return f"<p>{content}</p>"
             else:
                 return content
