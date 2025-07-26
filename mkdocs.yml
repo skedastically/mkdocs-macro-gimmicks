@@ -14,8 +14,8 @@ exclude_docs: |
   .*
   _*
 
-repo_url: https://github.com/skedastically/mkdocs-macro-gimmicks
-repo_name: skedastically/mkdocs-macro-gimmicks
+repo_url: https://github.com/skedastically/mkdocs-macros-gimmicks
+repo_name: skedastically/mkdocs-macros-gimmicks
 
 markdown_extensions:
   - admonition
@@ -34,8 +34,8 @@ plugins:
   - awesome-nav
 
 extra:
-  patch_blob_url: https://github.com/skedastically/mkdocs-macro-gimmicks/blob/main/awesome-nav-tweak.patch
-  patch_url: https://raw.githubusercontent.com/skedastically/mkdocs-macro-gimmicks/refs/heads/main/awesome-nav-tweak.patch
+  macro_blob_url: https://github.com/skedastically/mkdocs-macros-gimmicks/blob/main/main.py
+  macro_raw_url: https://raw.githubusercontent.com/skedastically/mkdocs-macros-gimmicks/refs/heads/main/main.py
 
 hooks:
   - hooks.py

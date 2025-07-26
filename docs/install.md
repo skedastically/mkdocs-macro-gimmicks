@@ -4,7 +4,7 @@ Assuming you're inside your mkdocs project directory...
 
 ## 1. Install macros
 
-Install **macros** via [mkdocs-macro-plugin](https://mkdocs-macros-plugin.readthedocs.io/en/latest/#installation) as well as required packages
+Install **macros** via [mkdocs-macros-plugin](https://mkdocs-macros-plugin.readthedocs.io/en/latest/#installation) as well as required packages
 
 ```bash
 pip install mkdocs-macro-plugin mrkdwn_analysis pathspec python-frontmatter
@@ -33,12 +33,12 @@ This is important for use in [lsnav()](macros-reference/lsnav.md), as it allows 
 
 ## 3. Create `main.py`:
 
-Copy the contents of [main.py](https://github.com/skedastically/mkdocs-macro-gimmicks/blob/main/main.py) into the project directory.
+Copy the contents of [main.py]({{ macro_blob_url }}) into the project directory.
 
 With wget:
 
 ```bash
-wget https://raw.githubusercontent.com/skedastically/mkdocs-macro-gimmicks/main/main.py
+wget {{ macro_raw_url }}
 ```
 
 Now you can start using commands such as `{{ "{{ lsdir() }}" }}` and see their results during `mkdocs serve`
